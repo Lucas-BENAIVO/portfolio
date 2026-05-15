@@ -1,7 +1,31 @@
-<main>
-  <app-hero />
-  <app-about />
-  <app-skills />
-  <app-projects />
-  <app-contact />
-</main>
+<section class="home">
+  <header class="home__top">
+    @if (portfolio.openToWork) {
+      <span class="badge-open">Open to work</span>
+    }
+    <a class="btn-cv" [href]="portfolio.cvUrl" download>Download CV</a>
+  </header>
+
+  <div class="home__body">
+    <div class="home__content">
+      <p class="home__role">{{ portfolio.role }}</p>
+      <h1 class="home__name">{{ portfolio.name }}</h1>
+
+      <div class="home__contacts">
+        @for (contact of portfolio.contacts; track contact.label) {
+          <a class="contact-item" [href]="contact.href" [attr.data-icon]="contact.icon">
+            <span class="contact-item__icon"></span>
+            <span class="contact-item__text">
+              <span class="contact-item__label">{{ contact.label }}</span>
+              <span class="contact-item__value">{{ contact.value }}</span>
+            </span>
+          </a>
+        }
+      </div>
+    </div>
+
+    <div class="home__visual" aria-hidden="true">
+      <div class="home__silhouette"></div>
+    </div>
+  </div>
+</section>

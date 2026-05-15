@@ -1,0 +1,15 @@
+<section class="page">
+  <h2 class="section-title">Experience</h2>
+  <ul class="timeline">
+    @for (item of portfolio.experience; track item.company) {
+      <li class="timeline__item">
+        <div class="timeline__head">
+          <h3 class="timeline__role">{{ item.role }}</h3>
+          <span class="timeline__period">{{ item.period }}</span>
+        </div>
+        <p class="timeline__company">{{ item.company }}</p>
+        <p class="timeline__desc">{{ item.description }}</p>
+      </li>
+    }
+  </ul>
+</section>

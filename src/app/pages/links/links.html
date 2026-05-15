@@ -1,0 +1,13 @@
+<section class="page">
+  <h2 class="section-title">Links</h2>
+  <ul class="links-list">
+    @for (link of portfolio.links; track link.url) {
+      <li>
+        <a class="links-list__item" [href]="link.url" target="_blank" rel="noopener noreferrer">
+          {{ link.label }}
+          <span class="links-list__arrow">→</span>
+        </a>
+      </li>
+    }
+  </ul>
+</section>

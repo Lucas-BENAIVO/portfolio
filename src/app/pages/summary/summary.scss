@@ -1,0 +1,38 @@
+.page {
+  padding: 2rem 2.5rem 2.5rem;
+}
+
+.page__text {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--text-muted);
+  margin-bottom: 2.5rem;
+  max-width: 36rem;
+}
+
+.project-preview {
+  display: block;
+  padding: 1.25rem 1.5rem;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-sm);
+  transition: border-color 0.2s, background 0.2s;
+
+  &:hover {
+    border-color: rgba(245, 184, 0, 0.35);
+    background: rgba(245, 184, 0, 0.06);
+  }
+}
+
+.project-preview__title {
+  display: block;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--accent);
+  margin-bottom: 0.25rem;
+}
+
+.project-preview__cat {
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+}

@@ -2,11 +2,11 @@ import { Component } from '@angular/core';
 import { PORTFOLIO } from '../../data/portfolio.data';
 
 @Component({
-  selector: 'app-footer',
+  selector: 'app-experience',
   imports: [],
-  templateUrl: './footer.html',
+  templateUrl: './experience.html',
+  styleUrl: './experience.scss',
 })
-export class Footer {
+export class Experience {
   protected readonly portfolio = PORTFOLIO;
-  protected readonly year = new Date().getFullYear();
 }

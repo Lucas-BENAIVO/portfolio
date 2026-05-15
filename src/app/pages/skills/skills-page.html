@@ -1,0 +1,33 @@
+<section class="page skills-page">
+  <div class="software-grid">
+    @for (tool of portfolio.software; track tool.name) {
+      <div class="software-grid__item" [title]="tool.name">
+        <span class="software-grid__icon" [style.background]="tool.color">{{ tool.abbr }}</span>
+      </div>
+    }
+  </div>
+
+  <h2 class="section-title">Languages</h2>
+  <ul class="lang-list">
+    @for (lang of portfolio.languages; track lang.name) {
+      <li class="lang-list__item">
+        <div class="lang-list__head">
+          <span>{{ lang.name }}</span>
+        </div>
+        <div class="lang-list__bar">
+          <div class="lang-list__fill" [style.width.%]="lang.level"></div>
+        </div>
+      </li>
+    }
+  </ul>
+
+  <h2 class="section-title">Education &amp; Certificates</h2>
+  <ul class="edu-list">
+    @for (edu of portfolio.education; track edu.title) {
+      <li class="edu-list__item">
+        <h3>{{ edu.title }}</h3>
+        <p>{{ edu.detail }}</p>
+      </li>
+    }
+  </ul>
+</section>

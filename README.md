@@ -1,36 +1,36 @@
-# Portfolio — Angular (base)
+# Portfolio — Tyrone Brooks (maquette UX/UI)
 
-Structure Angular minimale, **sans styles personnalisés** pour l’instant.
+Site portfolio Angular inspiré de la maquette fournie : thème sombre, glassmorphism, accent jaune/orange, navigation en pilule.
 
-## Démarrage
+## Lancer
 
 ```bash
 npm install
 npm start
 ```
 
+→ [http://localhost:4200](http://localhost:4200)
+
+## Pages
+
+| Route | Contenu |
+|-------|---------|
+| `/` | Accueil — hero, contacts, silhouette |
+| `/summary` | Résumé + lien projet |
+| `/experience` | Parcours professionnel |
+| `/skills` | Logiciels, langues, formation |
+| `/links` | Liens externes |
+| `/project/flowstate` | Détail projet Flowstate |
+
+## Personnalisation
+
+Éditez `src/app/data/portfolio.data.ts` (nom, contacts, compétences, projets…).
+
 ## Structure
 
 ```
 src/app/
-├── data/portfolio.data.ts   # Données du site
-├── layout/                  # header, footer
-├── sections/                # hero, about, skills, projects, contact
-├── pages/home/              # page d'accueil (assemble les sections)
-├── app.ts                   # composant racine
-└── app.routes.ts            # routing
+├── data/portfolio.data.ts
+├── layout/          shell + bottom-nav
+└── pages/           home, summary, experience, skills, links, project-detail
 ```
-
-## Concepts Angular utilisés
-
-- Composants standalone
-- Routing (`app.routes.ts`)
-- `@for` dans les templates
-- `@if` (si besoin)
-- Property binding `[href]`
-- Interpolation `{{ }}`
-- Fichier de données partagé
-
-## Styles
-
-Ajoutez vos styles plus tard dans `src/styles.scss` ou dans les fichiers `.scss` des composants.

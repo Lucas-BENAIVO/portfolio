@@ -2,10 +2,11 @@ import { Component } from '@angular/core';
 import { PORTFOLIO } from '../../data/portfolio.data';
 
 @Component({
-  selector: 'app-hero',
+  selector: 'app-skills-page',
   imports: [],
-  templateUrl: './hero.html',
+  templateUrl: './skills-page.html',
+  styleUrl: './skills-page.scss',
 })
-export class Hero {
+export class SkillsPage {
   protected readonly portfolio = PORTFOLIO;
 }

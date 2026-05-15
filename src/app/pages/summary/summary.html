@@ -1,0 +1,12 @@
+<section class="page">
+  <h2 class="section-title">Summary</h2>
+  <p class="page__text">{{ portfolio.summary }}</p>
+
+  <h2 class="section-title">Featured project</h2>
+  @if (portfolio.projects[0]; as project) {
+    <a class="project-preview" [routerLink]="['/project', project.slug]">
+      <span class="project-preview__title">{{ project.title }}</span>
+      <span class="project-preview__cat">{{ project.category }}</span>
+    </a>
+  }
+</section>

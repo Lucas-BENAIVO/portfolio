@@ -1,13 +1,12 @@
 import { Component } from '@angular/core';
-import { Hero } from '../../sections/hero/hero';
-import { About } from '../../sections/about/about';
-import { Skills } from '../../sections/skills/skills';
-import { Projects } from '../../sections/projects/projects';
-import { Contact } from '../../sections/contact/contact';
+import { PORTFOLIO } from '../../data/portfolio.data';
 
 @Component({
   selector: 'app-home',
-  imports: [Hero, About, Skills, Projects, Contact],
+  imports: [],
   templateUrl: './home.html',
+  styleUrl: './home.scss',
 })
-export class Home {}
+export class Home {
+  protected readonly portfolio = PORTFOLIO;
+}
