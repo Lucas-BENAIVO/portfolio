@@ -1,5 +1,5 @@
 .home {
-  padding: clamp(2rem, 4vw, 3.5rem) clamp(2rem, 6vw, 5rem);
+  padding: var(--page-pad-y) var(--page-pad-x);
   min-height: 100%;
   height: 100%;
   display: flex;
@@ -9,8 +9,10 @@
 
 .home__top {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
+  gap: 0.75rem 1rem;
   margin-bottom: 2rem;
 }
 
@@ -149,9 +151,21 @@
   }
 }
 
+/* Tablette portrait */
+@media (max-width: 1024px) {
+  .home__body {
+    gap: 1.5rem;
+  }
+
+  .home__name {
+    margin-bottom: 1.5rem;
+  }
+}
+
 @media (max-width: 768px) {
   .home {
-    padding: 1.5rem;
+    height: auto;
+    min-height: 100%;
   }
 
   .home__body {
@@ -159,16 +173,50 @@
   }
 
   .home__visual {
-    min-height: 200px;
+    min-height: 180px;
     order: -1;
+    align-items: center;
   }
 
   .home__silhouette {
-    max-width: 200px;
-    height: 240px;
+    max-width: min(220px, 55vw);
+    height: min(260px, 32vh);
   }
 
   .home__contacts {
     grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .home__top {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .home__top .btn-cv {
+    width: 100%;
+  }
+
+  .home__name {
+    font-size: clamp(2rem, 10vw, 2.75rem);
+    margin-bottom: 1.25rem;
+  }
+
+  .contact-item__value {
+    font-size: 0.75rem;
+  }
+}
+
+/* Tablette paysage : colonnes plus équilibrées */
+@media (min-width: 769px) and (max-width: 1024px) and (orientation: landscape) {
+  .home__body {
+    grid-template-columns: 1.1fr 0.9fr;
+  }
+
+  .home__silhouette {
+    max-width: min(300px, 35vw);
+    height: min(400px, 70vh);
   }
 }

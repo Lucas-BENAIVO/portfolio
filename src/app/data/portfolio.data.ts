@@ -50,7 +50,7 @@ export interface LinkItem {
 
 export const PORTFOLIO = {
   openToWork: true,
-  name: 'Tyrone Brooks',
+  name: 'Lucas RABENAIVO',
   role: 'UX/UI Designer',
   cvUrl: '/cv.pdf',
   contacts: [

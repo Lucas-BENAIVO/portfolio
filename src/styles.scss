@@ -12,6 +12,8 @@
   --radius: 28px;
   --radius-sm: 16px;
   --nav-h: 88px;
+  --page-pad-x: clamp(1.25rem, 6vw, 5rem);
+  --page-pad-y: clamp(1.5rem, 4vw, 3.5rem);
   --font: 'Inter', system-ui, sans-serif;
   --glow: radial-gradient(
     ellipse 80% 60% at 85% 40%,
@@ -25,6 +27,10 @@
 *::before,
 *::after {
   box-sizing: border-box;
+}
+
+html {
+  overflow-x: hidden;
 }
 
 html,
@@ -111,7 +117,7 @@ ul {
 .shell {
   min-height: 100vh;
   height: 100vh;
-  padding: 0 0 var(--nav-h);
+  padding: 0 0 calc(var(--nav-h) + env(safe-area-inset-bottom, 0px));
   display: flex;
   flex-direction: column;
   align-items: stretch;
@@ -159,15 +165,51 @@ ul {
 }
 
 .page {
-  padding: clamp(2rem, 4vw, 3.5rem) clamp(2rem, 6vw, 5rem);
+  padding: var(--page-pad-y) var(--page-pad-x);
   min-height: 100%;
   box-sizing: border-box;
 }
 
+/* ——— Tablette ——— */
+@media (max-width: 1024px) {
+  :root {
+    --nav-h: 80px;
+  }
+
+  .page__text,
+  .links-list,
+  .lang-list {
+    max-width: 100%;
+  }
+}
+
+/* ——— Mobile ——— */
 @media (max-width: 640px) {
+  :root {
+    --nav-h: 72px;
+    --page-pad-x: 1.25rem;
+    --page-pad-y: 1.5rem;
+  }
+
   .shell {
     height: auto;
     min-height: 100vh;
+  }
+
+  .section-title {
+    font-size: 0.75rem;
+  }
+
+  .btn-cv {
+    padding: 0.5rem 1rem;
+    font-size: 0.8125rem;
+  }
+}
+
+/* ——— Très petit écran ——— */
+@media (max-width: 380px) {
+  :root {
+    --page-pad-x: 1rem;
   }
 }
 

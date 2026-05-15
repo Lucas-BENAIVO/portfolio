@@ -1,6 +1,6 @@
 .bottom-nav {
   position: fixed;
-  bottom: 1.25rem;
+  bottom: max(1rem, env(safe-area-inset-bottom, 0px));
   left: 50%;
   transform: translateX(-50%);
   z-index: 100;
@@ -8,6 +8,7 @@
   align-items: center;
   gap: 0.25rem;
   padding: 0.5rem;
+  max-width: calc(100vw - 1.5rem);
   background: rgba(30, 30, 34, 0.85);
   border: 1px solid var(--glass-border);
   border-radius: 999px;
@@ -77,17 +78,40 @@
 
 @media (max-width: 640px) {
   .bottom-nav {
-    width: calc(100% - 2rem);
+    width: calc(100% - 1.5rem);
     justify-content: space-between;
     overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
   }
 
   .bottom-nav__item {
     min-width: auto;
+    flex-shrink: 0;
     padding: 0.5rem 0.625rem;
   }
 
   .bottom-nav__label {
     font-size: 0.625rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .bottom-nav__label {
+    display: none;
+  }
+
+  .bottom-nav__item {
+    min-width: 2.75rem;
+    padding: 0.625rem;
+  }
+
+  .bottom-nav__icon {
+    width: 22px;
+    height: 22px;
   }
 }

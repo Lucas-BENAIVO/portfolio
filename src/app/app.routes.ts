@@ -12,7 +12,7 @@ export const routes: Routes = [
     path: '',
     component: Shell,
     children: [
-      { path: '', component: Home, title: 'Tyrone Brooks — UX/UI Designer' },
+      { path: '', component: Home, title: 'Lucas RABENAIVO — UX/UI Designer' },
       { path: 'summary', component: Summary, title: 'Summary' },
       { path: 'experience', component: Experience, title: 'Experience' },
       { path: 'skills', component: SkillsPage, title: 'Skills' },

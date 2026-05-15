@@ -1,5 +1,5 @@
 .project-detail {
-  padding: clamp(2rem, 4vw, 3.5rem) clamp(2rem, 6vw, 5rem);
+  padding: var(--page-pad-y) var(--page-pad-x);
   min-height: 100%;
   box-sizing: border-box;
 }
@@ -53,5 +53,29 @@
     color: var(--text-muted);
     line-height: 1.6;
     margin-bottom: 0.5rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .project-detail__title {
+    font-size: 1.625rem;
+  }
+
+  .project-detail__phone {
+    width: min(200px, 55vw);
+  }
+
+  .project-detail__achievements {
+    padding-left: 1rem;
+  }
+}
+
+@media (max-width: 380px) {
+  .back-link {
+    font-size: 0.8125rem;
+  }
+
+  .project-detail__title {
+    font-size: 1.5rem;
   }
 }
