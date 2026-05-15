@@ -28,6 +28,11 @@
               {
                 "glob": "**/*",
                 "input": "public"
+              },
+              {
+                "glob": "CV.pdf",
+                "input": ".",
+                "output": "/"
               }
             ],
             "styles": [

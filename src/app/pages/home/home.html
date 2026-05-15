@@ -3,7 +3,14 @@
     @if (portfolio.openToWork) {
       <span class="badge-open">Open to work</span>
     }
-    <a class="btn-cv" [href]="portfolio.cvUrl" download>Download CV</a>
+    <a
+      class="btn-cv"
+      [href]="portfolio.cvUrl"
+      [attr.download]="portfolio.cvDownloadName"
+      type="application/pdf"
+    >
+      Download CV
+    </a>
   </header>
 
   <div class="home__body">

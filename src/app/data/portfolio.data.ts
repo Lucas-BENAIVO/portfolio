@@ -52,7 +52,8 @@ export const PORTFOLIO = {
   openToWork: true,
   name: 'Lucas RABENAIVO',
   role: 'UX/UI Designer',
-  cvUrl: '/cv.pdf',
+  cvUrl: '/CV.pdf',
+  cvDownloadName: 'Lucas-RABENAIVO-CV.pdf',
   contacts: [
     {
       label: 'Email',
