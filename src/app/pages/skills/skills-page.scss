@@ -1,33 +1,56 @@
-/* padding via .page global */
-
-.software-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-  gap: 1rem;
-  margin-bottom: 2.5rem;
-  max-width: 720px;
+.skill-category {
+  margin-bottom: 2.25rem;
 }
 
-.software-grid__item {
-  aspect-ratio: 1;
+.tech-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  gap: 0.875rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.tech-card {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
+  gap: 0.625rem;
+  padding: 1rem 0.5rem;
   background: rgba(255, 255, 255, 0.04);
   border: 1px solid var(--glass-border);
   border-radius: var(--radius-sm);
+  transition: border-color 0.2s, transform 0.2s, background 0.2s;
+
+  &:hover {
+    border-color: rgba(245, 184, 0, 0.35);
+    background: rgba(245, 184, 0, 0.06);
+    transform: translateY(-2px);
+  }
 }
 
-.software-grid__icon {
+.tech-card__icon-wrap {
   width: 48px;
   height: 48px;
-  border-radius: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 12px;
+}
+
+.tech-card__icon {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+}
+
+.tech-card__name {
   font-size: 0.75rem;
-  font-weight: 700;
-  color: #111;
+  font-weight: 500;
+  color: var(--text-muted);
+  text-align: center;
+  line-height: 1.25;
 }
 
 .lang-list {
@@ -74,32 +97,40 @@
 }
 
 @media (max-width: 768px) {
-  .software-grid {
-    max-width: 100%;
-    grid-template-columns: repeat(auto-fill, minmax(72px, 1fr));
+  .tech-grid {
+    grid-template-columns: repeat(auto-fill, minmax(88px, 1fr));
+    gap: 0.75rem;
   }
 }
 
 @media (max-width: 640px) {
-  .software-grid {
-    grid-template-columns: repeat(4, 1fr);
-    gap: 0.75rem;
+  .tech-grid {
+    grid-template-columns: repeat(3, 1fr);
   }
 
-  .software-grid__icon {
+  .tech-card {
+    padding: 0.75rem 0.375rem;
+  }
+
+  .tech-card__icon-wrap {
     width: 40px;
     height: 40px;
+  }
+
+  .tech-card__icon {
+    width: 26px;
+    height: 26px;
+  }
+
+  .tech-card__name {
     font-size: 0.6875rem;
+    text-align: center;
+    line-height: 1.2;
   }
 }
 
 @media (max-width: 380px) {
-  .software-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-
-  .software-grid__icon {
-    width: 36px;
-    height: 36px;
+  .tech-grid {
+    grid-template-columns: repeat(2, 1fr);
   }
 }

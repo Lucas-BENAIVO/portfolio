@@ -1,3 +1,5 @@
+import { TECH_ICONS } from './tech-icons';
+
 export interface NavItem {
   label: string;
   path: string;
@@ -11,10 +13,15 @@ export interface ContactItem {
   icon: 'email' | 'linkedin' | 'phone' | 'location';
 }
 
-export interface SoftwareTool {
+export interface TechSkill {
   name: string;
-  abbr: string;
-  color: string;
+  icon: string;
+}
+
+export interface SkillCategory {
+  id: string;
+  label: string;
+  skills: TechSkill[];
 }
 
 export interface Language {
@@ -111,16 +118,88 @@ export const PORTFOLIO = {
       description: 'Identités visuelles, maquettes et livrables pour startups et PME.',
     },
   ] satisfies ExperienceItem[],
-  software: [
-    { name: 'Framer', abbr: 'Fr', color: '#0055ff' },
-    { name: 'Figma', abbr: 'Fi', color: '#a259ff' },
-    { name: 'Photoshop', abbr: 'Ps', color: '#31a8ff' },
-    { name: 'Illustrator', abbr: 'Ai', color: '#ff9a00' },
-    { name: 'Sketch', abbr: 'Sk', color: '#fdb300' },
-    { name: 'Midjourney', abbr: 'Mj', color: '#e5e5e5' },
-    { name: 'Spline', abbr: 'Sp', color: '#3b82f6' },
-    { name: 'Blender', abbr: 'Bl', color: '#e87d0d' },
-  ] satisfies SoftwareTool[],
+  technicalSkills: [
+    {
+      id: 'languages',
+      label: 'Langages',
+      skills: [
+        { name: 'HTML', icon: TECH_ICONS.html },
+        { name: 'CSS', icon: TECH_ICONS.css },
+        { name: 'JavaScript', icon: TECH_ICONS.javascript },
+        { name: 'TypeScript', icon: TECH_ICONS.typescript },
+        { name: 'Python', icon: TECH_ICONS.python },
+        { name: 'Java', icon: TECH_ICONS.java },
+        { name: 'C#', icon: TECH_ICONS.csharp },
+        { name: 'PHP', icon: TECH_ICONS.php },
+      ],
+    },
+    {
+      id: 'frontend',
+      label: 'Frameworks Front-end',
+      skills: [
+        { name: 'React', icon: TECH_ICONS.react },
+        { name: 'Next.js', icon: TECH_ICONS.nextjs },
+        { name: 'Vue.js', icon: TECH_ICONS.vuejs },
+        { name: 'Angular', icon: TECH_ICONS.angular },
+      ],
+    },
+    {
+      id: 'backend',
+      label: 'Frameworks Back-end',
+      skills: [
+        { name: 'Express', icon: TECH_ICONS.express },
+        { name: 'FastAPI', icon: TECH_ICONS.fastapi },
+        { name: 'Spring', icon: TECH_ICONS.spring },
+        { name: '.NET', icon: TECH_ICONS.dotnet },
+        { name: 'Laravel', icon: TECH_ICONS.laravel },
+        { name: 'Symfony', icon: TECH_ICONS.symfony },
+      ],
+    },
+    {
+      id: 'cms',
+      label: 'E-commerce / CMS',
+      skills: [{ name: 'Shopify', icon: TECH_ICONS.shopify }],
+    },
+    {
+      id: 'database',
+      label: 'Bases de données',
+      skills: [
+        { name: 'MySQL', icon: TECH_ICONS.mysql },
+        { name: 'PostgreSQL', icon: TECH_ICONS.postgresql },
+        { name: 'DWH', icon: TECH_ICONS.dwh },
+      ],
+    },
+    {
+      id: 'tools',
+      label: 'Outils',
+      skills: [
+        { name: 'Postman', icon: TECH_ICONS.postman },
+        { name: 'Docker', icon: TECH_ICONS.docker },
+      ],
+    },
+    {
+      id: 'vcs',
+      label: 'Gestion de version',
+      skills: [
+        { name: 'Git', icon: TECH_ICONS.git },
+        { name: 'GitHub', icon: TECH_ICONS.github },
+        { name: 'Bitbucket', icon: TECH_ICONS.bitbucket },
+      ],
+    },
+    {
+      id: 'cloud',
+      label: 'Stockage / Cloud',
+      skills: [
+        { name: 'Cloudinary', icon: TECH_ICONS.cloudinary },
+        { name: 'AWS S3', icon: TECH_ICONS.aws },
+      ],
+    },
+    {
+      id: 'methodology',
+      label: 'Méthodologie',
+      skills: [{ name: 'Agile Scrum', icon: TECH_ICONS.scrum }],
+    },
+  ] satisfies SkillCategory[],
   languages: [
     { name: 'English', level: 95 },
     { name: 'Spanish', level: 70 },

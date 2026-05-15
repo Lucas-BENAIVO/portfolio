@@ -1,13 +1,31 @@
 <section class="page skills-page">
-  <div class="software-grid">
-    @for (tool of portfolio.software; track tool.name) {
-      <div class="software-grid__item" [title]="tool.name">
-        <span class="software-grid__icon" [style.background]="tool.color">{{ tool.abbr }}</span>
-      </div>
-    }
-  </div>
+  <h2 class="section-title">Skills</h2>
 
-  <h2 class="section-title">Languages</h2>
+  @for (category of portfolio.technicalSkills; track category.id) {
+    <section class="skill-category">
+      <h2 class="section-title">{{ category.label }}</h2>
+      <ul class="tech-grid">
+        @for (skill of category.skills; track skill.name) {
+          <li class="tech-card">
+            <div class="tech-card__icon-wrap">
+              <img
+                class="tech-card__icon"
+                [src]="skill.icon"
+                [alt]=""
+                width="32"
+                height="32"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <span class="tech-card__name">{{ skill.name }}</span>
+          </li>
+        }
+      </ul>
+    </section>
+  }
+
+  <h2 class="section-title">Langues</h2>
   <ul class="lang-list">
     @for (lang of portfolio.languages; track lang.name) {
       <li class="lang-list__item">
@@ -21,7 +39,7 @@
     }
   </ul>
 
-  <h2 class="section-title">Education &amp; Certificates</h2>
+  <h2 class="section-title">Formation &amp; certificats</h2>
   <ul class="edu-list">
     @for (edu of portfolio.education; track edu.title) {
       <li class="edu-list__item">
