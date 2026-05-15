@@ -1,0 +1,8 @@
+<header>
+  <p>{{ portfolio.name }}</p>
+  <nav>
+    @for (link of portfolio.nav; track link.fragment) {
+      <a [href]="'#' + link.fragment">{{ link.label }}</a>
+    }
+  </nav>
+</header>
