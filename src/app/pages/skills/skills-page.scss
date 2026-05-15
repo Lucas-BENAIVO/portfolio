@@ -1,12 +1,11 @@
-.skills-page {
-  padding: 2rem 2.5rem 2.5rem;
-}
+/* padding via .page global */
 
 .software-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
   gap: 1rem;
   margin-bottom: 2.5rem;
+  max-width: 720px;
 }
 
 .software-grid__item {

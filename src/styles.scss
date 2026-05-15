@@ -110,21 +110,23 @@ ul {
 
 .shell {
   min-height: 100vh;
-  padding: 1.5rem 1.5rem calc(var(--nav-h) + 1.5rem);
+  height: 100vh;
+  padding: 0 0 var(--nav-h);
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: stretch;
 }
 
 .shell__card {
   width: 100%;
-  max-width: 960px;
-  min-height: calc(100vh - var(--nav-h) - 3rem);
+  max-width: none;
+  flex: 1;
+  min-height: 0;
   background: var(--bg-card);
-  border: 1px solid var(--glass-border);
-  border-radius: var(--radius);
+  border: none;
+  border-radius: 0;
   backdrop-filter: blur(24px);
-  overflow: hidden;
+  overflow: auto;
   position: relative;
 
   &::before {
@@ -143,22 +145,29 @@ ul {
 }
 
 .shell--project {
-  padding-bottom: 1.5rem;
+  padding-bottom: var(--nav-h);
 }
 
 .shell--project .shell__card {
-  min-height: auto;
-  max-width: 520px;
+  display: flex;
+  justify-content: center;
+}
+
+.shell--project .project-detail {
+  width: 100%;
+  max-width: 640px;
+}
+
+.page {
+  padding: clamp(2rem, 4vw, 3.5rem) clamp(2rem, 6vw, 5rem);
+  min-height: 100%;
+  box-sizing: border-box;
 }
 
 @media (max-width: 640px) {
   .shell {
-    padding: 1rem 1rem calc(var(--nav-h) + 1rem);
-  }
-
-  .shell__card {
-    min-height: auto;
-    border-radius: var(--radius-sm);
+    height: auto;
+    min-height: 100vh;
   }
 }
 
