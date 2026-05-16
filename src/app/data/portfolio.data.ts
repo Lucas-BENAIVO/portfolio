@@ -10,7 +10,7 @@ export interface ContactItem {
   label: string;
   value: string;
   href: string;
-  icon: 'email' | 'linkedin' | 'phone' | 'location';
+  icon: 'email' | 'linkedin' | 'phone' | 'location' | 'github';
 }
 
 export interface TechSkill {
@@ -60,31 +60,31 @@ export interface LinkItem {
 export const PORTFOLIO = {
   openToWork: true,
   name: 'Lucas RABENAIVO',
-  role: 'UX/UI Designer',
+  role: 'Développeur Full-Stack',
   cvUrl: '/CV.pdf',
   cvDownloadName: 'Lucas-RABENAIVO-CV.pdf',
   contacts: [
     {
       label: 'Email',
-      value: 'tyrone.brooks@gmail.com',
-      href: 'mailto:tyrone.brooks@gmail.com',
+      value: 'rabenaivolucas@gmail.com',
+      href: 'mailto:rabenaivolucas@gmail.com',
       icon: 'email',
     },
     {
-      label: 'LinkedIn',
-      value: 'linkedin.com/in/tyrone-brooks',
-      href: 'https://linkedin.com/in/tyrone-brooks',
-      icon: 'linkedin',
+      label: 'GitHub',
+      value: 'github.com',
+      href: 'https://github.com',
+      icon: 'github',
     },
     {
       label: 'Phone',
-      value: '+1 404-555-9876',
-      href: 'tel:+14045559876',
+      value: '+261 38 19 502 21',
+      href: 'tel:+261381950221',
       icon: 'phone',
     },
     {
       label: 'Location',
-      value: 'Atlanta, US',
+      value: 'Ambohimanambola, Antananarivo, Madagascar',
       href: '#',
       icon: 'location',
     },
@@ -97,27 +97,21 @@ export const PORTFOLIO = {
     { label: 'Links', path: 'links', icon: 'links' },
   ] satisfies NavItem[],
   summary:
-    'Designer UX/UI orienté produit, avec une approche centrée utilisateur et une sensibilité forte pour les interfaces claires et les parcours fluides.',
+    'Curieux, rigoureux et créatif, je me spécialise en développement full-stack avec une passion pour l’intelligence artificielle appliquée. Mon approche méthodique et mon engagement dans l’apprentissage continu visent à transformer les défis techniques en solutions concrètes et innovantes.',
   experience: [
     {
-      role: 'Senior UX/UI Designer',
-      company: 'Creative Studio',
-      period: '2022 — Present',
+      role: 'Stagiaire en Développement Full-Stack',
+      company: 'NextHope',
+      period: 'Février 2026 — Mai 2026',
       description:
-        'Conception de parcours utilisateurs, design systems et prototypes haute fidélité pour des applications web et mobile.',
+        'Développement d’une plateforme de recrutement (Vue.js, Node.js, API REST, PostgreSQL, AWS S3, Git/Bitbucket). Refonte du site e-commerce « Mass In » en cours (Shopify, Odoo, dropshipping).',
     },
     {
-      role: 'Product Designer',
-      company: 'Digital Agency',
-      period: '2019 — 2022',
+      role: 'Stagiaire en Développement Full-Stack',
+      company: 'Digital Afrique Telecom',
+      period: 'Juillet 2025 — Octobre 2025',
       description:
-        'Collaboration avec les équipes produit et développement sur des refontes e-commerce et des dashboards.',
-    },
-    {
-      role: 'UI Designer',
-      company: 'Freelance',
-      period: '2016 — 2019',
-      description: 'Identités visuelles, maquettes et livrables pour startups et PME.',
+        'Conception et développement d’une plateforme MVP de Business Intelligence augmentée par l’IA : Next.js, Tailwind CSS, Node.js, ETL, Python (prédiction des revenus, détection d’anomalies, chatbot), PostgreSQL, DWH, Postman.',
     },
   ] satisfies ExperienceItem[],
   technicalSkills: [
@@ -193,7 +187,7 @@ export const PORTFOLIO = {
       label: 'Stockage / Cloud',
       skills: [
         { name: 'Cloudinary', icon: TECH_ICONS.cloudinary },
-        { name: 'AWS', icon: TECH_ICONS.aws, wide: true },
+        { name: 'AWS S3', icon: TECH_ICONS.aws, wide: true },
       ],
     },
     {
@@ -203,36 +197,97 @@ export const PORTFOLIO = {
     },
   ] satisfies SkillCategory[],
   languages: [
-    { name: 'English', level: 95 },
-    { name: 'Spanish', level: 70 },
-    { name: 'French', level: 55 },
+    { name: 'Malgache', level: 100 },
+    { name: 'Français (DELF B2 / DALF C1)', level: 95 },
+    { name: 'Anglais', level: 75 },
   ] satisfies Language[],
   education: [
     {
-      title: 'Savannah College of Art and Design (SCAD)',
-      detail: 'Bachelor of Fine Arts in User Experience Design (2016)',
+      title: 'Master 1 en Informatique (en cours)',
+      detail: 'Depuis décembre 2025 — IT University, Andoharanofotsy, Madagascar',
     },
     {
-      title: 'Google UX Design Certificate',
-      detail: 'August 2022',
+      title: 'Certification en ingénierie IA pour le développement logiciel',
+      detail: 'Mai 2026 — DataCamp (niveau associé)',
+    },
+    {
+      title: 'Certification en développement Python',
+      detail: 'Mai 2026 — freeCodeCamp',
+    },
+    {
+      title: 'Certification en développement JavaScript',
+      detail: 'Avril 2026 — freeCodeCamp',
+    },
+    {
+      title: "Certification en Fondamentaux de l'Intelligence Artificielle",
+      detail: 'Avril 2026 — DataCamp',
+    },
+    {
+      title: 'Certification en Culture des Données',
+      detail: 'Avril 2026 — DataCamp',
+    },
+    {
+      title: 'Licence en Informatique',
+      detail: '2025 — IT University, Andoharanofotsy, Madagascar',
+    },
+    {
+      title: 'Formation en neuromarketing',
+      detail: '2024 — Free Sell, Antananarivo, Madagascar',
+    },
+    {
+      title: 'Baccalauréat Technologique',
+      detail: '2022 — Collège Saint Michel, Amparibe, Madagascar',
     },
   ] satisfies EducationItem[],
   projects: [
     {
-      slug: 'flowstate',
-      title: 'Flowstate',
-      category: 'Web Application',
+      slug: 'mean-centre-commercial',
+      title: 'Plateforme web — centre commercial',
+      category: 'Projet MEAN — Master 1',
       about:
-        'Redesign of an online shopping experience focused on seamless navigation, clearer product discovery, and a checkout flow that reduces friction for mobile users.',
+        'Conception et développement en binôme d’une application web MEAN pour un centre commercial, avec gestion des profils Admin, Boutique et Acheteurs. Stack : Angular, TypeScript, Node.js, Express, MongoDB, API REST, Git/GitHub.',
       achievements: [
-        'Improved conversion rates by 20% within three months post-launch.',
+        'Architecture multi-rôles (Admin, Boutique, Acheteurs).',
+        'Projet réalisé dans le cadre du Master 1 — mars 2026.',
+      ],
+    },
+    {
+      slug: 'bi-ia-digital-afrique',
+      title: 'Plateforme BI augmentée par l’IA',
+      category: 'Stage — Digital Afrique Telecom',
+      about:
+        'MVP de Business Intelligence avec Next.js, Tailwind CSS, Node.js, ETL et modules IA en Python : prédiction des revenus, détection d’anomalies et chatbot. Données : PostgreSQL et entrepôt (DWH).',
+      achievements: [
+        'Intégration de pipelines ETL et d’API testées avec Postman.',
+        'Fonctionnalités IA pour l’aide à la décision métier.',
+      ],
+    },
+    {
+      slug: 'plateforme-recrutement',
+      title: 'Plateforme de recrutement',
+      category: 'Stage — NextHope',
+      about:
+        'Développement d’une plateforme de recrutement full-stack : front-end Vue.js, back-end Node.js, API REST, PostgreSQL, stockage AWS S3, versioning Git/Bitbucket.',
+      achievements: [
+        'Mise en place d’une architecture full-stack complète.',
+        'En parallèle : refonte e-commerce « Mass In » (Shopify, Odoo).',
+      ],
+    },
+    {
+      slug: 'hackathon-redshalk',
+      title: 'Solution IoT/IA pour l’agriculture',
+      category: 'Hackathon RedShalk — 2e place',
+      about:
+        'Conception en équipe d’une architecture IoT/IA pour la collecte de données environnementales et la génération de recommandations intelligentes. Back-end Java (Servlets, API REST, CRUD, RBAC), IA Python, PostgreSQL.',
+      achievements: [
+        '2e place au Hackathon RedShalk — décembre 2024.',
       ],
     },
   ] satisfies Project[],
   links: [
-    { label: 'LinkedIn', url: 'https://linkedin.com/in/tyrone-brooks' },
-    { label: 'Dribbble', url: 'https://dribbble.com' },
-    { label: 'Behance', url: 'https://behance.net' },
     { label: 'GitHub', url: 'https://github.com' },
+    { label: 'freeCodeCamp', url: 'https://www.freecodecamp.org' },
+    { label: 'DataCamp', url: 'https://www.datacamp.com' },
+    { label: 'Email', url: 'mailto:rabenaivolucas@gmail.com' },
   ] satisfies LinkItem[],
 } as const;
