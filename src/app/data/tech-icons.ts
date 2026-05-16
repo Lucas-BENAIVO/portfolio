@@ -34,6 +34,7 @@ export const TECH_ICONS = {
   github: devicon('github', 'github'),
   bitbucket: devicon('bitbucket', 'bitbucket'),
   cloudinary: simple('cloudinary', '3448C5'),
-  aws: devicon('amazonwebservices', 'amazonwebservices'),
+  /** Logo officiel AWS (texte + flèche orange) */
+  aws: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-original-wordmark.svg',
   scrum: simple('scrumalliance', '0091D5'),
 } as const;

@@ -7,11 +7,15 @@
       <ul class="tech-grid">
         @for (skill of category.skills; track skill.name) {
           <li class="tech-card">
-            <div class="tech-card__icon-wrap">
+            <div
+              class="tech-card__icon-wrap"
+              [class.tech-card__icon-wrap--wide]="skill.wide"
+            >
               <img
                 class="tech-card__icon"
+                [class.tech-card__icon--wide]="skill.wide"
                 [src]="skill.icon"
-                [alt]=""
+                [alt]="skill.name"
                 width="32"
                 height="32"
                 loading="lazy"

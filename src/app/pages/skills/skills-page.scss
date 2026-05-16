@@ -45,6 +45,17 @@
   object-fit: contain;
 }
 
+.tech-card__icon-wrap--wide {
+  width: 64px;
+}
+
+.tech-card__icon--wide {
+  width: 56px;
+  height: auto;
+  max-height: 32px;
+  object-fit: contain;
+}
+
 .tech-card__name {
   font-size: 0.75rem;
   font-weight: 500;

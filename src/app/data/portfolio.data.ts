@@ -16,6 +16,8 @@ export interface ContactItem {
 export interface TechSkill {
   name: string;
   icon: string;
+  /** Logo horizontal (ex. AWS wordmark) */
+  wide?: boolean;
 }
 
 export interface SkillCategory {
@@ -191,7 +193,7 @@ export const PORTFOLIO = {
       label: 'Stockage / Cloud',
       skills: [
         { name: 'Cloudinary', icon: TECH_ICONS.cloudinary },
-        { name: 'AWS S3', icon: TECH_ICONS.aws },
+        { name: 'AWS', icon: TECH_ICONS.aws, wide: true },
       ],
     },
     {
