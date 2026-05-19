@@ -32,7 +32,15 @@
     </div>
 
     <div class="home__visual" aria-hidden="true">
-      <div class="home__silhouette"></div>
+      <img
+        class="home__profile"
+        src="/profile.png"
+        [alt]="'Photo de ' + portfolio.name"
+        width="1734"
+        height="907"
+        decoding="async"
+        fetchpriority="high"
+      />
     </div>
   </div>
 </section>
