@@ -280,16 +280,28 @@
     grid-template-columns: 1fr;
     gap: 1rem;
   }
-}
 
-@media (max-width: 480px) {
   .home__top {
-    flex-direction: column;
-    align-items: flex-start;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+    margin-bottom: 1.25rem;
   }
 
   .home__top .btn-cv {
-    width: 100%;
+    width: auto;
+    flex-shrink: 0;
+    padding: 0.45rem 0.875rem;
+    font-size: 0.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .home__top .btn-cv {
+    padding: 0.4rem 0.7rem;
+    font-size: 0.6875rem;
   }
 
   .home__name {
