@@ -7,5 +7,6 @@ import { BottomNav } from '../bottom-nav/bottom-nav';
   imports: [RouterOutlet, BottomNav],
   templateUrl: './shell.html',
   styleUrl: './shell.scss',
+  host: { class: 'shell-host' },
 })
 export class Shell {}
