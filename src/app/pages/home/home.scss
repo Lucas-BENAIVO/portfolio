@@ -226,8 +226,17 @@
 }
 
 @media (max-width: 768px) {
+  :host {
+    height: auto;
+    flex: 1 0 auto;
+  }
+
   .home {
+    height: auto;
+    min-height: 0;
+    overflow: visible;
     justify-content: flex-start;
+    padding-bottom: calc(var(--nav-h) + 1.25rem);
   }
 
   .home__body {
