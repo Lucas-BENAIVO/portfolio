@@ -195,7 +195,7 @@
   }
 
   .home__body {
-    padding-top: min(30vh, 235px);
+    padding-top: min(25vh, 195px);
   }
 
   .home__visual {
@@ -203,7 +203,7 @@
     right: calc(-1 * var(--page-pad-x));
     left: calc(-1 * var(--page-pad-x));
     bottom: auto;
-    height: min(32vh, 260px);
+    height: min(28vh, 220px);
     transform: translateX(-2rem);
 
     &::after {
