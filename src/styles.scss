@@ -85,6 +85,7 @@ ul {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  gap: 0.5rem;
   padding: 0.625rem 1.25rem;
   font-family: inherit;
   font-size: 0.875rem;
@@ -103,6 +104,22 @@ ul {
   &:active {
     transform: scale(0.98);
   }
+}
+
+.btn-cv__icon {
+  display: none;
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+  background: #1a1a1a;
+  mask-size: contain;
+  mask-repeat: no-repeat;
+  mask-position: center;
+  -webkit-mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2'%3E%3Cpath d='M12 4v10m0 0l3.5-3.5M12 14l-3.5-3.5M5 19h14'/%3E%3C/svg%3E");
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2'%3E%3Cpath d='M12 4v10m0 0l3.5-3.5M12 14l-3.5-3.5M5 19h14'/%3E%3C/svg%3E");
 }
 
 .badge-open {
