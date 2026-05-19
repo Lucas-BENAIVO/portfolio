@@ -20,13 +20,34 @@
 
       <div class="home__contacts">
         @for (contact of portfolio.contacts; track contact.label) {
-          <a class="contact-item" [href]="contact.href" [attr.data-icon]="contact.icon">
-            <span class="contact-item__icon"></span>
-            <span class="contact-item__text">
-              <span class="contact-item__label">{{ contact.label }}</span>
-              <span class="contact-item__value">{{ contact.value }}</span>
-            </span>
-          </a>
+          @if (contact.whatsappHref) {
+            <div class="contact-item" [attr.data-icon]="contact.icon">
+              <span class="contact-item__icon" aria-hidden="true"></span>
+              <span class="contact-item__text">
+                <span class="contact-item__label">{{ contact.label }}</span>
+                <span class="contact-item__value contact-item__value--phone">
+                  <a class="contact-item__link" [href]="contact.href">{{ contact.value }}</a>
+                  <a
+                    class="contact-item__wa"
+                    [href]="contact.whatsappHref"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    [attr.aria-label]="'WhatsApp — ' + contact.value"
+                  >
+                    <span class="contact-item__wa-icon" aria-hidden="true"></span>
+                  </a>
+                </span>
+              </span>
+            </div>
+          } @else {
+            <a class="contact-item" [href]="contact.href" [attr.data-icon]="contact.icon">
+              <span class="contact-item__icon" aria-hidden="true"></span>
+              <span class="contact-item__text">
+                <span class="contact-item__label">{{ contact.label }}</span>
+                <span class="contact-item__value">{{ contact.value }}</span>
+              </span>
+            </a>
+          }
         }
       </div>
     </div>

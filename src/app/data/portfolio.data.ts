@@ -11,6 +11,8 @@ export interface ContactItem {
   value: string;
   href: string;
   icon: 'email' | 'linkedin' | 'phone' | 'location' | 'github';
+  /** Lien WhatsApp (affiché comme icône à côté du numéro) */
+  whatsappHref?: string;
 }
 
 export interface TechSkill {
@@ -40,7 +42,8 @@ export interface ExperienceItem {
   role: string;
   company: string;
   period: string;
-  description: string;
+  highlights: string[];
+  stack: string[];
 }
 
 export interface Project {
@@ -80,6 +83,7 @@ export const PORTFOLIO = {
       label: 'Phone',
       value: '+261 38 19 502 21',
       href: 'tel:+261381950221',
+      whatsappHref: 'https://wa.me/261381950221',
       icon: 'phone',
     },
     {
@@ -103,15 +107,40 @@ export const PORTFOLIO = {
       role: 'Stagiaire en Développement Full-Stack',
       company: 'NextHope',
       period: 'Février 2026 — Mai 2026',
-      description:
-        'Développement d’une plateforme de recrutement (Vue.js, Node.js, API REST, PostgreSQL, AWS S3, Git/Bitbucket). Refonte du site e-commerce « Mass In » en cours (Shopify, Odoo, dropshipping).',
+      highlights: [
+        'Développement d’une plateforme de recrutement.',
+        'Refonte du site e-commerce « Mass In » en cours.',
+      ],
+      stack: [
+        'Vue.js',
+        'Node.js',
+        'API REST',
+        'PostgreSQL',
+        'AWS S3',
+        'Git',
+        'Bitbucket',
+        'Shopify',
+        'Odoo',
+      ],
     },
     {
       role: 'Stagiaire en Développement Full-Stack',
       company: 'Digital Afrique Telecom',
       period: 'Juillet 2025 — Octobre 2025',
-      description:
-        'Conception et développement d’une plateforme MVP de Business Intelligence augmentée par l’IA : Next.js, Tailwind CSS, Node.js, ETL, Python (prédiction des revenus, détection d’anomalies, chatbot), PostgreSQL, DWH, Postman.',
+      highlights: [
+        'Conception et développement d’une plateforme MVP de Business Intelligence augmentée par l’IA.',
+        'Prédiction des revenus, détection d’anomalies et chatbot d’assistance.',
+      ],
+      stack: [
+        'Next.js',
+        'Tailwind CSS',
+        'Node.js',
+        'ETL',
+        'Python',
+        'PostgreSQL',
+        'DWH',
+        'Postman',
+      ],
     },
   ] satisfies ExperienceItem[],
   technicalSkills: [

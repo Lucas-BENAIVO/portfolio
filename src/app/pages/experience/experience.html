@@ -8,7 +8,16 @@
           <span class="timeline__period">{{ item.period }}</span>
         </div>
         <p class="timeline__company">{{ item.company }}</p>
-        <p class="timeline__desc">{{ item.description }}</p>
+        <ul class="timeline__highlights">
+          @for (line of item.highlights; track $index) {
+            <li>{{ line }}</li>
+          }
+        </ul>
+        <ul class="timeline__stack" aria-label="Technologies">
+          @for (tech of item.stack; track tech) {
+            <li class="timeline__tag">{{ tech }}</li>
+          }
+        </ul>
       </li>
     }
   </ul>
