@@ -7,7 +7,7 @@
       class="btn-cv"
       [href]="portfolio.cvUrl"
       [attr.download]="portfolio.cvDownloadName"
-      type="application/pdf"
+      (click)="downloadCv($event)"
     >
       <span class="btn-cv__icon" aria-hidden="true"></span>
       <span class="btn-cv__label">Télécharger le CV</span>
