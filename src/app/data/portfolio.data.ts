@@ -3,7 +3,7 @@ import { TECH_ICONS } from './tech-icons';
 export interface NavItem {
   label: string;
   path: string;
-  icon: 'home' | 'summary' | 'experience' | 'skills' | 'links';
+  icon: 'home' | 'summary' | 'experience' | 'skills';
 }
 
 export interface ContactItem {
@@ -33,17 +33,44 @@ export interface Language {
   level: number;
 }
 
+export interface InterestItem {
+  label: string;
+  icon: 'volunteer' | 'sport' | 'travel' | 'culture';
+}
+
 export interface EducationItem {
   title: string;
-  detail: string;
+  period: string;
+  detail?: string;
+}
+
+export interface CompetitionItem {
+  title: string;
+  period: string;
+  description: string;
+  details?: ExperienceDetail[];
+  /** Lien vers la page détail projet */
+  projectSlug?: string;
+}
+
+export interface ExperienceDetail {
+  label: string;
+  value: string;
+}
+
+export interface ExperienceMission {
+  title: string;
+  details: ExperienceDetail[];
+  href?: string;
+  linkLabel?: string;
+  inProgress?: boolean;
 }
 
 export interface ExperienceItem {
   role: string;
   company: string;
   period: string;
-  highlights: string[];
-  stack: string[];
+  missions: ExperienceMission[];
 }
 
 export interface Project {
@@ -53,12 +80,65 @@ export interface Project {
   about: string;
   achievements: string[];
   image?: string;
+  /** Lien direct vers le site en ligne (carte Summary sans page détail obligatoire) */
+  externalUrl?: string;
+  /** Court texte sur la carte Featured (page Summary) */
+  preview?: string;
 }
 
-export interface LinkItem {
-  label: string;
-  url: string;
-}
+const EXPERIENCE: ExperienceItem[] = [
+  {
+    role: 'Stagiaire en Développement Full-Stack',
+    company: 'NextHope',
+    period: 'Février 2026 — Mai 2026',
+    missions: [
+      {
+        title: 'Développement d’une plateforme de recrutement : Talentago',
+        href: 'https://talentago.serenity.mg/',
+        linkLabel: 'Voir Talentago',
+        details: [
+          { label: 'Front-end', value: 'Vue.js' },
+          { label: 'Back-end et API', value: 'Node.js, API REST' },
+          { label: 'Base de données', value: 'PostgreSQL' },
+          { label: 'Gestion de version', value: 'Git, Bitbucket' },
+          { label: 'Stockage / Cloud', value: 'AWS S3' },
+        ],
+      },
+      {
+        title: 'Refonte du site e-commerce : Mass In',
+        inProgress: true,
+        details: [
+          { label: 'Plateforme', value: 'Shopify' },
+          { label: 'Gestion des stocks (ERP)', value: 'Odoo' },
+          { label: 'Modèle commercial', value: 'Dropshipping' },
+          { label: 'Gestion de version', value: 'Git, Bitbucket' },
+        ],
+      },
+    ],
+  },
+  {
+    role: 'Stagiaire en Développement Full-Stack',
+    company: 'Digital Afrique Telecom',
+    period: 'Juillet 2025 — Octobre 2025',
+    missions: [
+      {
+        title:
+          'Conception et développement d’une plateforme MVP de Business Intelligence augmentée par l’IA',
+        details: [
+          { label: 'Front-end', value: 'Next.js, Tailwind CSS' },
+          { label: 'Back-end', value: 'Node.js, ETL' },
+          {
+            label: 'IA / Data',
+            value:
+              'Python — prédiction des revenus, détection d’anomalies, chatbot',
+          },
+          { label: 'Base de données', value: 'PostgreSQL, DWH' },
+          { label: 'Outils', value: 'Postman' },
+        ],
+      },
+    ],
+  },
+];
 
 export const PORTFOLIO = {
   openToWork: true,
@@ -68,81 +148,40 @@ export const PORTFOLIO = {
   cvDownloadName: 'Lucas-RABENAIVO-CV.pdf',
   contacts: [
     {
-      label: 'Email',
+      label: 'Courriel',
       value: 'rabenaivolucas@gmail.com',
       href: 'mailto:rabenaivolucas@gmail.com',
       icon: 'email',
     },
     {
       label: 'GitHub',
-      value: 'github.com',
-      href: 'https://github.com',
+      value: 'Lucas-BENAIVO',
+      href: 'https://github.com/Lucas-BENAIVO',
       icon: 'github',
     },
     {
-      label: 'Phone',
+      label: 'Téléphone',
       value: '+261 38 19 502 21',
       href: 'tel:+261381950221',
       whatsappHref: 'https://wa.me/261381950221',
       icon: 'phone',
     },
     {
-      label: 'Location',
+      label: 'Localisation',
       value: 'Ambohimanambola, Antananarivo, Madagascar',
       href: '#',
       icon: 'location',
     },
   ] satisfies ContactItem[],
   nav: [
-    { label: 'Home', path: '', icon: 'home' },
-    { label: 'Summary', path: 'summary', icon: 'summary' },
-    { label: 'Experience', path: 'experience', icon: 'experience' },
-    { label: 'Skills', path: 'skills', icon: 'skills' },
-    { label: 'Links', path: 'links', icon: 'links' },
+    { label: 'Accueil', path: '', icon: 'home' },
+    { label: 'Résumé', path: 'summary', icon: 'summary' },
+    { label: 'Expérience', path: 'experience', icon: 'experience' },
+    { label: 'Compétences', path: 'skills', icon: 'skills' },
   ] satisfies NavItem[],
   summary:
     'Curieux, rigoureux et créatif, je me spécialise en développement full-stack avec une passion pour l’intelligence artificielle appliquée. Mon approche méthodique et mon engagement dans l’apprentissage continu visent à transformer les défis techniques en solutions concrètes et innovantes.',
-  experience: [
-    {
-      role: 'Stagiaire en Développement Full-Stack',
-      company: 'NextHope',
-      period: 'Février 2026 — Mai 2026',
-      highlights: [
-        'Développement d’une plateforme de recrutement.',
-        'Refonte du site e-commerce « Mass In » en cours.',
-      ],
-      stack: [
-        'Vue.js',
-        'Node.js',
-        'API REST',
-        'PostgreSQL',
-        'AWS S3',
-        'Git',
-        'Bitbucket',
-        'Shopify',
-        'Odoo',
-      ],
-    },
-    {
-      role: 'Stagiaire en Développement Full-Stack',
-      company: 'Digital Afrique Telecom',
-      period: 'Juillet 2025 — Octobre 2025',
-      highlights: [
-        'Conception et développement d’une plateforme MVP de Business Intelligence augmentée par l’IA.',
-        'Prédiction des revenus, détection d’anomalies et chatbot d’assistance.',
-      ],
-      stack: [
-        'Next.js',
-        'Tailwind CSS',
-        'Node.js',
-        'ETL',
-        'Python',
-        'PostgreSQL',
-        'DWH',
-        'Postman',
-      ],
-    },
-  ] satisfies ExperienceItem[],
+  experience: EXPERIENCE,
   technicalSkills: [
     {
       id: 'languages',
@@ -160,7 +199,7 @@ export const PORTFOLIO = {
     },
     {
       id: 'frontend',
-      label: 'Frameworks Front-end',
+      label: 'Frameworks front-end',
       skills: [
         { name: 'React', icon: TECH_ICONS.react },
         { name: 'Next.js', icon: TECH_ICONS.nextjs },
@@ -170,7 +209,7 @@ export const PORTFOLIO = {
     },
     {
       id: 'backend',
-      label: 'Frameworks Back-end',
+      label: 'Frameworks back-end',
       skills: [
         { name: 'Express', icon: TECH_ICONS.express },
         { name: 'FastAPI', icon: TECH_ICONS.fastapi },
@@ -225,6 +264,19 @@ export const PORTFOLIO = {
       skills: [{ name: 'Agile Scrum', icon: TECH_ICONS.scrum }],
     },
   ] satisfies SkillCategory[],
+  softSkills: [
+    'Rigueur',
+    'Autonomie',
+    "Écoute active et esprit d'équipe",
+    'Adaptabilité',
+    "Facilité d'intégration",
+  ] satisfies string[],
+  interests: [
+    { label: 'Bénévolat', icon: 'volunteer' },
+    { label: 'Sport et randonnée', icon: 'sport' },
+    { label: 'Voyage', icon: 'travel' },
+    { label: 'Musique et cinéma', icon: 'culture' },
+  ] satisfies InterestItem[],
   languages: [
     { name: 'Malgache', level: 100 },
     { name: 'Français (DELF B2 / DALF C1)', level: 95 },
@@ -233,51 +285,99 @@ export const PORTFOLIO = {
   education: [
     {
       title: 'Master 1 en Informatique (en cours)',
-      detail: 'Depuis décembre 2025 — IT University, Andoharanofotsy, Madagascar',
+      period: 'Depuis décembre 2025',
+      detail: 'IT University, Andoharanofotsy, Madagascar',
     },
     {
       title: 'Certification en ingénierie IA pour le développement logiciel',
-      detail: 'Mai 2026 — DataCamp (niveau associé)',
+      period: 'Mai 2026',
+      detail: 'DataCamp (niveau associé)',
     },
     {
       title: 'Certification en développement Python',
-      detail: 'Mai 2026 — freeCodeCamp',
+      period: 'Mai 2026',
+      detail: 'freeCodeCamp',
     },
     {
       title: 'Certification en développement JavaScript',
-      detail: 'Avril 2026 — freeCodeCamp',
+      period: 'Avril 2026',
+      detail: 'freeCodeCamp',
     },
     {
       title: "Certification en Fondamentaux de l'Intelligence Artificielle",
-      detail: 'Avril 2026 — DataCamp',
+      period: 'Avril 2026',
+      detail: 'DataCamp',
     },
     {
       title: 'Certification en Culture des Données',
-      detail: 'Avril 2026 — DataCamp',
+      period: 'Avril 2026',
+      detail: 'DataCamp',
     },
     {
       title: 'Licence en Informatique',
-      detail: '2025 — IT University, Andoharanofotsy, Madagascar',
+      period: '2025',
+      detail: 'IT University, Andoharanofotsy, Madagascar',
     },
     {
       title: 'Formation en neuromarketing',
-      detail: '2024 — Free Sell, Antananarivo, Madagascar',
+      period: '2024',
+      detail: 'Free Sell, Antananarivo, Madagascar',
     },
     {
       title: 'Baccalauréat Technologique',
-      detail: '2022 — Collège Saint Michel, Amparibe, Madagascar',
+      period: '2022',
+      detail: 'Collège Saint Michel, Amparibe, Madagascar',
     },
   ] satisfies EducationItem[],
+  competitions: [
+    {
+      title: 'Solution IoT/IA pour l’agriculture',
+      period: 'Hackathon RedShalk — 2e place · Décembre 2024',
+      description:
+        'Architecture IoT/IA : collecte de données environnementales et recommandations intelligentes.',
+      details: [
+        {
+          label: 'Back-end et API',
+          value: 'Java, Servlets, API REST, CRUD, RBAC',
+        },
+        {
+          label: 'Intelligence Artificielle',
+          value: 'Python',
+        },
+        {
+          label: 'Base de données',
+          value: 'PostgreSQL',
+        },
+      ],
+      projectSlug: 'hackathon-redshalk',
+    },
+  ] satisfies CompetitionItem[],
   projects: [
     {
       slug: 'mean-centre-commercial',
       title: 'Plateforme web — centre commercial',
       category: 'Projet MEAN — Master 1',
+      preview:
+        'Application web MEAN pour un centre commercial : profils Admin, Boutique et Acheteurs, API REST et base MongoDB.',
       about:
         'Conception et développement en binôme d’une application web MEAN pour un centre commercial, avec gestion des profils Admin, Boutique et Acheteurs. Stack : Angular, TypeScript, Node.js, Express, MongoDB, API REST, Git/GitHub.',
       achievements: [
         'Architecture multi-rôles (Admin, Boutique, Acheteurs).',
         'Projet réalisé dans le cadre du Master 1 — mars 2026.',
+      ],
+    },
+    {
+      slug: 'rush-school',
+      title: 'Rush School — K Beauty Academy',
+      category: 'Site vitrine — Formations beauté',
+      preview:
+        'Site vitrine pour une académie beauté : formations ongles & cils, boutique, avis élèves et prise de rendez-vous.',
+      externalUrl: 'https://rushschool.vercel.app/',
+      about:
+        'Site vitrine pour une académie de formations en prothésie ongulaire et extensions de cils : catalogue des formations, boutique, témoignages élèves et prise de rendez-vous.',
+      achievements: [
+        'Interface moderne, responsive et orientée conversion.',
+        'Déployé en production sur Vercel.',
       ],
     },
     {
@@ -307,16 +407,14 @@ export const PORTFOLIO = {
       title: 'Solution IoT/IA pour l’agriculture',
       category: 'Hackathon RedShalk — 2e place',
       about:
-        'Conception en équipe d’une architecture IoT/IA pour la collecte de données environnementales et la génération de recommandations intelligentes. Back-end Java (Servlets, API REST, CRUD, RBAC), IA Python, PostgreSQL.',
+        'Conception et développement en équipe d’une architecture IoT/IA permettant la collecte de données environnementales et la génération de recommandations intelligentes.',
       achievements: [
         '2e place au Hackathon RedShalk — décembre 2024.',
+        'Back-end et API : Java, Servlets, API REST, CRUD, RBAC.',
+        'Intelligence Artificielle : Python.',
+        'Base de données : PostgreSQL.',
       ],
     },
   ] satisfies Project[],
-  links: [
-    { label: 'GitHub', url: 'https://github.com' },
-    { label: 'freeCodeCamp', url: 'https://www.freecodecamp.org' },
-    { label: 'DataCamp', url: 'https://www.datacamp.com' },
-    { label: 'Email', url: 'mailto:rabenaivolucas@gmail.com' },
-  ] satisfies LinkItem[],
-} as const;
+  featuredProjectSlugs: ['rush-school', 'mean-centre-commercial'],
+};

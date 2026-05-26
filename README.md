@@ -16,10 +16,9 @@ npm start
 | Route | Contenu |
 |-------|---------|
 | `/` | Accueil — hero, contacts, silhouette |
-| `/summary` | Résumé + lien projet |
+| `/summary` | Résumé, projets, compétition, formation & certificats |
 | `/experience` | Parcours professionnel |
-| `/skills` | Logiciels, langues, formation |
-| `/links` | Liens externes |
+| `/skills` | Logiciels et langues |
 | `/project/flowstate` | Détail projet Flowstate |
 
 ## Personnalisation
@@ -32,5 +31,5 @@ npm start
 src/app/
 ├── data/portfolio.data.ts
 ├── layout/          shell + bottom-nav
-└── pages/           home, summary, experience, skills, links, project-detail
+└── pages/           home, summary, experience, skills, project-detail
 ```

@@ -2,8 +2,8 @@
   <div class="shell__card">
     <main class="shell__main">
     <section class="project-detail">
-      <a class="back-link" routerLink="/">
-        <span aria-hidden="true">←</span> Back to Home Page
+      <a class="back-link" routerLink="/summary">
+        <span aria-hidden="true">←</span> Retour au résumé
       </a>
 
       <div class="project-detail__mockup" aria-hidden="true">
@@ -15,10 +15,10 @@
       <h1 class="project-detail__title">{{ project.title }}</h1>
       <p class="project-detail__category">{{ project.category }}</p>
 
-      <h2 class="section-title">About The Project</h2>
+      <h2 class="section-title">À propos du projet</h2>
       <p class="project-detail__about">{{ project.about }}</p>
 
-      <h2 class="section-title">Achievements</h2>
+      <h2 class="section-title">Réalisations</h2>
       <ul class="project-detail__achievements">
         @for (item of project.achievements; track item) {
           <li>{{ item }}</li>

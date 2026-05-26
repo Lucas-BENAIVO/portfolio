@@ -1,5 +1,5 @@
 <section class="page">
-  <h2 class="section-title">Experience</h2>
+  <h2 class="section-title">Expérience</h2>
   <ul class="timeline">
     @for (item of portfolio.experience; track item.company) {
       <li class="timeline__item">
@@ -8,16 +8,38 @@
           <span class="timeline__period">{{ item.period }}</span>
         </div>
         <p class="timeline__company">{{ item.company }}</p>
-        <ul class="timeline__highlights">
-          @for (line of item.highlights; track $index) {
-            <li>{{ line }}</li>
+        <div class="timeline__missions">
+          @for (mission of item.missions; track mission.title) {
+            <section class="timeline__mission">
+              <div class="timeline__mission-head">
+                <h4 class="timeline__mission-title">{{ mission.title }}</h4>
+                @if (mission.inProgress) {
+                  <span class="timeline__mission-badge">En cours</span>
+                }
+              </div>
+              @if (mission.href) {
+                <a
+                  class="timeline__mission-cta"
+                  [href]="mission.href"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <span class="timeline__mission-cta-icon" aria-hidden="true"></span>
+                  <span>{{ mission.linkLabel ?? 'Voir le site' }}</span>
+                  <span class="timeline__mission-cta-arrow" aria-hidden="true"></span>
+                </a>
+              }
+              <ul class="timeline__details">
+                @for (detail of mission.details; track detail.label) {
+                  <li>
+                    <span class="timeline__detail-label">{{ detail.label }}</span>
+                    <span class="timeline__detail-value">{{ detail.value }}</span>
+                  </li>
+                }
+              </ul>
+            </section>
           }
-        </ul>
-        <ul class="timeline__stack" aria-label="Technologies">
-          @for (tech of item.stack; track tech) {
-            <li class="timeline__tag">{{ tech }}</li>
-          }
-        </ul>
+        </div>
       </li>
     }
   </ul>

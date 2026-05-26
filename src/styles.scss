@@ -256,18 +256,18 @@ body:has(.shell--home) .shell-host {
   min-height: 0;
   overflow-x: hidden;
   overflow-y: auto;
-  padding-bottom: calc(var(--nav-h) + 0.5rem);
+  padding-bottom: calc(var(--nav-h) + 2.5rem + env(safe-area-inset-bottom, 0px));
   -webkit-overflow-scrolling: touch;
 }
 
 .shell--project .shell__main {
-  display: flex;
-  justify-content: center;
+  display: block;
 }
 
 .shell--project .project-detail {
   width: 100%;
   max-width: 640px;
+  margin: 0 auto;
 }
 
 .page {
@@ -283,7 +283,6 @@ body:has(.shell--home) .shell-host {
   }
 
   .page__text,
-  .links-list,
   .lang-list {
     max-width: 100%;
   }
