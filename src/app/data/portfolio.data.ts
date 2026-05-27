@@ -90,7 +90,7 @@ const EXPERIENCE: ExperienceItem[] = [
   {
     role: 'Stagiaire en Développement Full-Stack',
     company: 'NextHope',
-    period: 'Février 2026 — Mai 2026',
+    period: 'Février 2026 à Mai 2026',
     missions: [
       {
         title: 'Développement d’une plateforme de recrutement : Talentago',
@@ -119,7 +119,7 @@ const EXPERIENCE: ExperienceItem[] = [
   {
     role: 'Stagiaire en Développement Full-Stack',
     company: 'Digital Afrique Telecom',
-    period: 'Juillet 2025 — Octobre 2025',
+    period: 'Juillet 2025 à Octobre 2025',
     missions: [
       {
         title:
@@ -130,7 +130,7 @@ const EXPERIENCE: ExperienceItem[] = [
           {
             label: 'IA / Data',
             value:
-              'Python — prédiction des revenus, détection d’anomalies, chatbot',
+              'Python, prédiction des revenus, détection d’anomalies, chatbot',
           },
           { label: 'Base de données', value: 'PostgreSQL, DWH' },
           { label: 'Outils', value: 'Postman' },
