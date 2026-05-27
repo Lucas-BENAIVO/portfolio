@@ -51,6 +51,9 @@ export interface CompetitionItem {
   details?: ExperienceDetail[];
   /** Lien vers la page détail projet */
   projectSlug?: string;
+  /** Lien externe (si pas de page détail interne) */
+  href?: string;
+  linkLabel?: string;
 }
 
 export interface ExperienceDetail {
@@ -330,6 +333,19 @@ export const PORTFOLIO = {
     },
   ] satisfies EducationItem[],
   competitions: [
+    {
+      title: 'Jeu RPG 2D en pixel art sur la déforestation',
+      period: 'Hackathon Game (Devpost) · Mai 2026',
+      description:
+        'Conception et développement d’un jeu narratif 2D en pixel art, sensibilisant à la déforestation, où les choix du joueur impactent l’état de la forêt en temps réel.',
+      details: [
+        { label: 'Moteur et gameplay', value: 'JavaScript, Maki, Phaser.js' },
+        { label: 'Front-end et build', value: 'HTML5, CSS, Vite, npm' },
+        { label: 'Gestion de version', value: 'Git, GitHub' },
+      ],
+      href: 'https://maki-2d-pixel-rpg.vercel.app/',
+      linkLabel: 'Voir le jeu',
+    },
     {
       title: 'Solution IoT/IA pour l’agriculture',
       period: 'Hackathon RedShalk — 2e place · Décembre 2024',
