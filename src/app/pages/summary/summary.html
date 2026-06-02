@@ -1,77 +1,129 @@
 <section class="page summary-page">
-  <h2 class="section-title">Résumé</h2>
-  <p class="page__text">{{ portfolio.summary }}</p>
+  <header class="page-head" appReveal>
+    <h1 class="page-head__title" appReveal [appRevealClip]="true" [appRevealDelay]="60">Résumé</h1>
+    <p class="page-head__sub" appReveal [appRevealDelay]="140">Projets, compétitions &amp; formation</p>
+  </header>
 
-  <h2 class="section-title">Projets phares</h2>
-  <div class="summary-cards">
-    @for (project of featuredProjects; track project.slug) {
-      @if (project.externalUrl) {
-        <a
-          class="summary-card"
-          [href]="project.externalUrl"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <span class="summary-card__title">{{ project.title }}</span>
-          <span class="summary-card__meta">{{ project.category }}</span>
-          @if (project.preview) {
-            <span class="summary-card__desc">{{ project.preview }}</span>
-          }
-        </a>
-      } @else {
-        <a class="summary-card" [routerLink]="['/project', project.slug]">
-          <span class="summary-card__title">{{ project.title }}</span>
-          <span class="summary-card__meta">{{ project.category }}</span>
-          @if (project.preview) {
-            <span class="summary-card__desc">{{ project.preview }}</span>
-          }
-        </a>
-      }
-    }
-  </div>
+  <div class="work-section" appReveal [appRevealDelay]="80">
+    <div class="work-section__top">
+      <h2 class="work-section__heading">Projets phares</h2>
+      <a class="btn-pill" routerLink="/experience">Voir l’expérience</a>
+    </div>
 
-  <h2 class="section-title">Compétition &amp; récompense</h2>
-  <div class="summary-cards">
-    @for (item of portfolio.competitions; track item.title) {
-      @if (item.projectSlug) {
-        <a class="summary-card" [routerLink]="['/project', item.projectSlug]">
-          <span class="summary-card__title">{{ item.title }}</span>
-          <span class="summary-card__meta">{{ item.period }}</span>
-          <span class="summary-card__desc">{{ item.description }}</span>
-        </a>
-      } @else if (item.href) {
-        <a
-          class="summary-card"
-          [href]="item.href"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <span class="summary-card__title">{{ item.title }}</span>
-          <span class="summary-card__meta">{{ item.period }}</span>
-          <span class="summary-card__desc">{{ item.description }}</span>
-        </a>
-      } @else {
-        <div class="summary-card">
-          <span class="summary-card__title">{{ item.title }}</span>
-          <span class="summary-card__meta">{{ item.period }}</span>
-          <span class="summary-card__desc">{{ item.description }}</span>
-        </div>
-      }
-    }
-  </div>
-
-  <h2 class="section-title">Formation &amp; certificats</h2>
-  <ul class="edu-list">
-    @for (edu of portfolio.education; track edu.title) {
-      <li class="edu-list__item">
-        <div class="edu-list__head">
-          <h3 class="edu-list__title">{{ edu.title }}</h3>
-          <span class="edu-list__period">{{ edu.period }}</span>
-        </div>
-        @if (edu.detail) {
-          <p class="edu-list__detail">{{ edu.detail }}</p>
+    <div class="work-grid">
+      @for (project of featuredProjects; track project.slug; let i = $index) {
+        @if (project.externalUrl) {
+          <a
+            [class]="'work-card work-card--' + (i % 4) + (project.image ? ' work-card--has-media' : '')"
+            [href]="project.externalUrl"
+            target="_blank"
+            rel="noopener noreferrer"
+            appReveal
+            [appRevealDelay]="120 + i * 90"
+          >
+            @if (project.image) {
+              <div class="work-card__media">
+                <img [src]="project.image" [alt]="project.title" loading="lazy" decoding="async" />
+              </div>
+            }
+            <span class="work-card__arrow" aria-hidden="true">↗</span>
+            <div class="work-card__content">
+              <span class="work-card__title">{{ project.title }}</span>
+              <span class="work-card__meta">{{ project.category }}</span>
+              @if (project.preview) {
+                <span class="work-card__desc">{{ project.preview }}</span>
+              }
+            </div>
+          </a>
+        } @else {
+          <a
+            [class]="'work-card work-card--' + (i % 4) + (project.image ? ' work-card--has-media' : '')"
+            [routerLink]="['/project', project.slug]"
+            appReveal
+            [appRevealDelay]="120 + i * 90"
+          >
+            @if (project.image) {
+              <div class="work-card__media">
+                <img [src]="project.image" [alt]="project.title" loading="lazy" decoding="async" />
+              </div>
+            }
+            <span class="work-card__arrow" aria-hidden="true">↗</span>
+            <div class="work-card__content">
+              <span class="work-card__title">{{ project.title }}</span>
+              <span class="work-card__meta">{{ project.category }}</span>
+              @if (project.preview) {
+                <span class="work-card__desc">{{ project.preview }}</span>
+              }
+            </div>
+          </a>
         }
-      </li>
-    }
-  </ul>
+      }
+    </div>
+  </div>
+
+  <div class="work-section" appReveal [appRevealDelay]="100">
+    <h2 class="work-section__heading">Compétition &amp; récompense</h2>
+    <div class="work-grid work-grid--compact">
+      @for (item of portfolio.competitions; track item.title; let i = $index) {
+        @if (item.projectSlug) {
+          <a
+            [class]="'work-card work-card--' + ((i + 2) % 4) + (item.image ? ' work-card--has-media' : '')"
+            [routerLink]="['/project', item.projectSlug]"
+            appReveal
+            [appRevealDelay]="140 + i * 90"
+          >
+            @if (item.image) {
+              <div class="work-card__media">
+                <img [src]="item.image" [alt]="item.title" loading="lazy" decoding="async" />
+              </div>
+            }
+            <span class="work-card__arrow" aria-hidden="true">↗</span>
+            <div class="work-card__content">
+              <span class="work-card__title">{{ item.title }}</span>
+              <span class="work-card__meta">{{ item.period }}</span>
+              <span class="work-card__desc">{{ item.description }}</span>
+            </div>
+          </a>
+        } @else if (item.href) {
+          <a
+            [class]="'work-card work-card--' + ((i + 2) % 4) + (item.image ? ' work-card--has-media' : '')"
+            [href]="item.href"
+            target="_blank"
+            rel="noopener noreferrer"
+            appReveal
+            [appRevealDelay]="140 + i * 90"
+          >
+            @if (item.image) {
+              <div class="work-card__media">
+                <img [src]="item.image" [alt]="item.title" loading="lazy" decoding="async" />
+              </div>
+            }
+            <span class="work-card__arrow" aria-hidden="true">↗</span>
+            <div class="work-card__content">
+              <span class="work-card__title">{{ item.title }}</span>
+              <span class="work-card__meta">{{ item.period }}</span>
+              <span class="work-card__desc">{{ item.description }}</span>
+            </div>
+          </a>
+        }
+      }
+    </div>
+  </div>
+
+  <div class="work-section" appReveal [appRevealDelay]="120">
+    <h2 class="work-section__heading">Formation &amp; certificats</h2>
+    <ul class="edu-list">
+      @for (edu of portfolio.education; track edu.title; let i = $index) {
+        <li class="edu-list__item" appReveal [appRevealDelay]="160 + i * 70">
+          <div class="edu-list__head">
+            <h3 class="edu-list__title">{{ edu.title }}</h3>
+            <span class="edu-list__period">{{ edu.period }}</span>
+          </div>
+          @if (edu.detail) {
+            <p class="edu-list__detail">{{ edu.detail }}</p>
+          }
+        </li>
+      }
+    </ul>
+  </div>
 </section>

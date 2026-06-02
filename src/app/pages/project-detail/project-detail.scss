@@ -1,86 +1,77 @@
-.project-detail {
-  padding: var(--page-pad-y) var(--page-pad-x);
-  min-height: 0;
-  box-sizing: border-box;
-}
-
-.project-detail__mockup {
+.shell--project {
+  background: var(--bg);
+  height: 100dvh;
+  min-height: 100dvh;
   display: flex;
-  justify-content: center;
-  margin-bottom: 2rem;
+  flex-direction: column;
 }
 
-.project-detail__phone {
-  width: 200px;
-  padding: 12px;
-  background: linear-gradient(145deg, #2a2a2e, #1a1a1e);
-  border-radius: 28px;
-  border: 2px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.5);
+.shell--project .shell__card {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
 }
 
-.project-detail__screen {
-  aspect-ratio: 9 / 16;
-  border-radius: 18px;
-  background: linear-gradient(160deg, #3d3d45 0%, #1e1e24 50%, rgba(245, 184, 0, 0.2) 100%);
+.shell--project .shell__main {
+  flex: 1;
+  overflow-y: auto;
 }
 
-.project-detail__title {
-  font-size: 2rem;
-  font-weight: 700;
-  color: var(--accent);
-  margin-bottom: 0.25rem;
-}
-
-.project-detail__category {
-  font-size: 0.875rem;
-  color: var(--text-muted);
-  margin-bottom: 1.5rem;
+.project-detail__body {
+  max-width: 40rem;
+  border-top: 1px solid var(--border);
+  padding-top: 2rem;
 }
 
 .project-detail__about {
-  font-size: 0.9375rem;
-  line-height: 1.7;
-  color: var(--text-muted);
-  margin-bottom: 1.5rem;
+  font-size: 1rem;
+  line-height: 1.75;
+  color: var(--text-secondary);
+  margin-bottom: 2.5rem;
 }
 
 .project-detail__achievements {
-  padding-left: 1.25rem;
-  margin-bottom: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin-top: 1rem;
+}
 
-  li {
-    font-size: 0.9375rem;
-    color: var(--text-muted);
-    line-height: 1.6;
-    margin-bottom: 0.5rem;
+.project-detail__achievements li {
+  font-size: 0.9375rem;
+  line-height: 1.65;
+  color: var(--text-secondary);
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--border);
 
-    &:last-child {
-      margin-bottom: 0;
-    }
+  &:last-child {
+    border-bottom: none;
   }
+}
+
+.skill-category__label {
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 0.75rem;
 }
 
 @media (max-width: 640px) {
-  .project-detail__title {
-    font-size: 1.625rem;
+  .project-detail__body {
+    padding-top: 1.5rem;
   }
 
-  .project-detail__phone {
-    width: min(200px, 55vw);
+  .project-detail__about {
+    font-size: 0.9375rem;
+    line-height: 1.65;
+    margin-bottom: 2rem;
   }
 
-  .project-detail__achievements {
-    padding-left: 1rem;
-  }
-}
-
-@media (max-width: 380px) {
-  .back-link {
-    font-size: 0.8125rem;
-  }
-
-  .project-detail__title {
-    font-size: 1.5rem;
+  .project-detail__achievements li {
+    font-size: 0.875rem;
+    padding: 0.875rem 0;
   }
 }

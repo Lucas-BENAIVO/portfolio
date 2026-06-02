@@ -1,0 +1,89 @@
+<header class="site-header">
+  @if (openToWork) {
+    <span class="badge-open site-header__badge">Open to work</span>
+  }
+
+  <nav class="site-header__nav" aria-label="Navigation principale">
+    <a
+      class="btn-pill site-header__cv"
+      [href]="cvUrl"
+      [attr.download]="cvDownloadName"
+      (click)="onDownloadCv($event)"
+    >
+      Télécharger le CV
+    </a>
+    @for (item of nav; track item.section) {
+      <a
+        class="site-header__link"
+        [class.site-header__link--active]="activeSection() === item.section"
+        [href]="'#' + item.section"
+        (click)="scrollTo(item.section, $event)"
+      >
+        {{ item.label }}
+      </a>
+    }
+    <a
+      class="site-header__link"
+      [class.site-header__link--active]="activeSection() === 'contact'"
+      href="#contact"
+      (click)="scrollTo('contact', $event)"
+    >
+      Contact
+    </a>
+  </nav>
+
+  <button
+    type="button"
+    class="site-header__toggle"
+    [class.site-header__toggle--open]="menuOpen()"
+    [attr.aria-expanded]="menuOpen()"
+    aria-label="Ouvrir le menu"
+    (click)="toggleMenu()"
+  >
+    <span></span>
+    <span></span>
+  </button>
+</header>
+
+@if (menuOpen()) {
+  <div
+    class="site-menu"
+    [class.site-menu--closing]="menuClosing()"
+    role="dialog"
+    aria-modal="true"
+    aria-label="Menu"
+  >
+    <button type="button" class="site-menu__close" aria-label="Fermer" (click)="closeMenu()">
+      <span></span>
+      <span></span>
+    </button>
+    <nav class="site-menu__nav">
+      <a
+        class="btn-pill site-menu__cv"
+        [href]="cvUrl"
+        [attr.download]="cvDownloadName"
+        (click)="onDownloadCv($event)"
+      >
+        Télécharger le CV
+      </a>
+      @for (item of nav; track item.section) {
+        <a
+          class="site-menu__link"
+          [class.site-menu__link--active]="activeSection() === item.section"
+          [href]="'#' + item.section"
+          (click)="scrollTo(item.section, $event)"
+        >
+          {{ item.label }}
+        </a>
+      }
+      <a
+        class="site-menu__link"
+        [class.site-menu__link--active]="activeSection() === 'contact'"
+        href="#contact"
+        (click)="scrollTo('contact', $event)"
+      >
+        Contact
+      </a>
+    </nav>
+  </div>
+}

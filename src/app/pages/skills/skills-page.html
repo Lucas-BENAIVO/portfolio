@@ -1,12 +1,15 @@
-<section class="page skills-page">
-  <h2 class="section-title">Compétences</h2>
+<section class="page skills-page" aria-label="Compétences">
+  <header class="page-head" appReveal>
+    <h1 class="page-head__title" appReveal [appRevealClip]="true" [appRevealDelay]="60">Compétences</h1>
+    <p class="page-head__sub" appReveal [appRevealDelay]="140">Stack technique, langues &amp; savoir-être</p>
+  </header>
 
-  @for (category of portfolio.technicalSkills; track category.id) {
-    <section class="skill-category">
-      <h2 class="section-title">{{ category.label }}</h2>
+  @for (category of portfolio.technicalSkills; track category.id; let ci = $index) {
+    <section class="skill-category" appReveal [appRevealDelay]="80 + ci * 60">
+      <h2 class="skill-category__label">{{ category.label }}</h2>
       <ul class="tech-grid">
-        @for (skill of category.skills; track skill.name) {
-          <li class="tech-card">
+        @for (skill of category.skills; track skill.name; let si = $index) {
+          <li class="tech-card" appReveal [appRevealDelay]="100 + si * 40">
             <div
               class="tech-card__icon-wrap"
               [class.tech-card__icon-wrap--wide]="skill.wide"
@@ -29,32 +32,32 @@
     </section>
   }
 
-  <h2 class="section-title">Savoir-être</h2>
-  <ul class="soft-skills">
-    @for (skill of portfolio.softSkills; track skill) {
-      <li class="soft-skills__item">{{ skill }}</li>
-    }
-  </ul>
+  <section class="skill-block" appReveal [appRevealDelay]="100">
+    <h2 class="skill-category__label">Savoir-être</h2>
+    <ul class="soft-skills">
+      @for (skill of portfolio.softSkills; track skill; let i = $index) {
+        <li class="soft-skills__item" appReveal [appRevealDelay]="120 + i * 50">{{ skill }}</li>
+      }
+    </ul>
+  </section>
 
-  <h2 class="section-title">Langues</h2>
-  <ul class="lang-list">
-    @for (lang of portfolio.languages; track lang.name) {
-      <li class="lang-list__item">
-        <div class="lang-list__head">
-          <span>{{ lang.name }}</span>
-        </div>
-        <div class="lang-list__bar">
-          <div class="lang-list__fill" [style.width.%]="lang.level"></div>
-        </div>
-      </li>
-    }
-  </ul>
+  <section class="skill-block" appReveal [appRevealDelay]="120">
+    <h2 class="skill-category__label">Langues</h2>
+    <ul class="lang-list">
+      @for (lang of portfolio.languages; track lang.name; let i = $index) {
+        <li class="lang-list__item" appReveal [appRevealDelay]="140 + i * 50">
+          <span class="lang-list__name">{{ lang.name }}</span>
+          <span class="lang-list__label">{{ lang.label }}</span>
+        </li>
+      }
+    </ul>
+  </section>
 
-  <section class="interests">
-    <h2 class="section-title">Centres d'intérêt</h2>
+  <section class="skill-block interests" appReveal [appRevealDelay]="140">
+    <h2 class="skill-category__label">Centres d'intérêt</h2>
     <ul class="interests__list">
-      @for (interest of portfolio.interests; track interest.label) {
-        <li class="interests__item">
+      @for (interest of portfolio.interests; track interest.label; let i = $index) {
+        <li class="interests__item" appReveal [appRevealDelay]="160 + i * 60">
           <span class="interests__icon-wrap" aria-hidden="true">
             @switch (interest.icon) {
               @case ('volunteer') {

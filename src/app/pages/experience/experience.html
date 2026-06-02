@@ -1,10 +1,14 @@
-<section class="page">
-  <h2 class="section-title">Expérience</h2>
+<section class="page experience-page">
+  <header class="page-head" appReveal>
+    <h1 class="page-head__title" appReveal [appRevealClip]="true" [appRevealDelay]="60">Expérience</h1>
+    <p class="page-head__sub" appReveal [appRevealDelay]="140">Parcours professionnel &amp; missions</p>
+  </header>
+
   <ul class="timeline">
-    @for (item of portfolio.experience; track item.company) {
-      <li class="timeline__item">
+    @for (item of portfolio.experience; track item.company; let i = $index) {
+      <li class="timeline__item" appReveal [appRevealDelay]="100 + i * 100">
         <div class="timeline__head">
-          <h3 class="timeline__role">{{ item.role }}</h3>
+          <h2 class="timeline__role">{{ item.role }}</h2>
           <span class="timeline__period">{{ item.period }}</span>
         </div>
         <p class="timeline__company">{{ item.company }}</p>
@@ -12,21 +16,25 @@
           @for (mission of item.missions; track mission.title) {
             <section class="timeline__mission">
               <div class="timeline__mission-head">
-                <h4 class="timeline__mission-title">{{ mission.title }}</h4>
+                <h3 class="timeline__mission-title">{{ mission.title }}</h3>
                 @if (mission.inProgress) {
                   <span class="timeline__mission-badge">En cours</span>
                 }
               </div>
+              @if (mission.image) {
+                <div class="timeline__mission-media">
+                  <img [src]="mission.image" [alt]="mission.title" loading="lazy" decoding="async" />
+                </div>
+              }
               @if (mission.href) {
                 <a
-                  class="timeline__mission-cta"
+                  class="timeline__mission-cta btn-pill"
                   [href]="mission.href"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <span class="timeline__mission-cta-icon" aria-hidden="true"></span>
-                  <span>{{ mission.linkLabel ?? 'Voir le site' }}</span>
-                  <span class="timeline__mission-cta-arrow" aria-hidden="true"></span>
+                  {{ mission.linkLabel ?? 'Voir le site' }}
+                  <span aria-hidden="true">↗</span>
                 </a>
               }
               <ul class="timeline__details">

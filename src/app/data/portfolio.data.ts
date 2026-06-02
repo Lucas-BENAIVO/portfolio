@@ -3,6 +3,7 @@ import { TECH_ICONS } from './tech-icons';
 export interface NavItem {
   label: string;
   path: string;
+  section: string;
   icon: 'home' | 'summary' | 'experience' | 'skills';
 }
 
@@ -31,6 +32,8 @@ export interface SkillCategory {
 export interface Language {
   name: string;
   level: number;
+  /** Libellé affiché (ex. C1, Intermédiaire) */
+  label: string;
 }
 
 export interface InterestItem {
@@ -49,6 +52,8 @@ export interface CompetitionItem {
   period: string;
   description: string;
   details?: ExperienceDetail[];
+  /** Aperçu visuel sur la carte */
+  image?: string;
   /** Lien vers la page détail projet */
   projectSlug?: string;
   /** Lien externe (si pas de page détail interne) */
@@ -64,6 +69,8 @@ export interface ExperienceDetail {
 export interface ExperienceMission {
   title: string;
   details: ExperienceDetail[];
+  /** Aperçu visuel de la mission */
+  image?: string;
   href?: string;
   linkLabel?: string;
   inProgress?: boolean;
@@ -97,6 +104,7 @@ const EXPERIENCE: ExperienceItem[] = [
     missions: [
       {
         title: 'Développement d’une plateforme de recrutement : Talentago',
+        image: '/projects/talentago.png',
         href: 'https://talentago.serenity.mg/',
         linkLabel: 'Voir Talentago',
         details: [
@@ -143,6 +151,45 @@ const EXPERIENCE: ExperienceItem[] = [
   },
 ];
 
+const COMPETITIONS: CompetitionItem[] = [
+  {
+    title: 'Jeu RPG 2D en pixel art sur la déforestation',
+    period: 'Hackathon Game (Devpost) · Mai 2026',
+    image: '/projects/jeu-rpg-2d.png',
+    description:
+      'Conception et développement d’un jeu narratif 2D en pixel art, sensibilisant à la déforestation, où les choix du joueur impactent l’état de la forêt en temps réel.',
+    details: [
+      { label: 'Moteur et gameplay', value: 'JavaScript, Maki, Phaser.js' },
+      { label: 'Front-end et build', value: 'HTML5, CSS, Vite, npm' },
+      { label: 'Gestion de version', value: 'Git, GitHub' },
+    ],
+    href: 'https://maki-2d-pixel-rpg.vercel.app/',
+    linkLabel: 'Voir le jeu',
+  },
+  {
+    title: 'Solution IoT/IA pour l’agriculture',
+    period: 'Hackathon RedShalk — 2e place · Décembre 2024',
+    image: '/projects/hackathon-redshalk.png',
+    description:
+      'Architecture IoT/IA : collecte de données environnementales et recommandations intelligentes.',
+    details: [
+      {
+        label: 'Back-end et API',
+        value: 'Java, Servlets, API REST, CRUD, RBAC',
+      },
+      {
+        label: 'Intelligence Artificielle',
+        value: 'Python',
+      },
+      {
+        label: 'Base de données',
+        value: 'PostgreSQL',
+      },
+    ],
+    projectSlug: 'hackathon-redshalk',
+  },
+];
+
 export const PORTFOLIO = {
   openToWork: true,
   name: 'Lucas RABENAIVO',
@@ -177,10 +224,10 @@ export const PORTFOLIO = {
     },
   ] satisfies ContactItem[],
   nav: [
-    { label: 'Accueil', path: '', icon: 'home' },
-    { label: 'Résumé', path: 'summary', icon: 'summary' },
-    { label: 'Expérience', path: 'experience', icon: 'experience' },
-    { label: 'Compétences', path: 'skills', icon: 'skills' },
+    { label: 'Accueil', path: '', section: 'home', icon: 'home' },
+    { label: 'Résumé', path: 'summary', section: 'resume', icon: 'summary' },
+    { label: 'Expérience', path: 'experience', section: 'experience', icon: 'experience' },
+    { label: 'Compétences', path: 'skills', section: 'skills', icon: 'skills' },
   ] satisfies NavItem[],
   summary:
     'Curieux, rigoureux et créatif, je me spécialise en développement full-stack avec une passion pour l’intelligence artificielle appliquée. Mon approche méthodique et mon engagement dans l’apprentissage continu visent à transformer les défis techniques en solutions concrètes et innovantes.',
@@ -278,9 +325,9 @@ export const PORTFOLIO = {
     { label: 'Musique et cinéma', icon: 'culture' },
   ] satisfies InterestItem[],
   languages: [
-    { name: 'Malgache', level: 100 },
-    { name: 'Français (DELF B2 / DALF C1)', level: 95 },
-    { name: 'Anglais', level: 75 },
+    { name: 'Malgache', level: 100, label: 'Langue maternelle' },
+    { name: 'Français', level: 95, label: 'DELF B2 / DALF C1' },
+    { name: 'Anglais', level: 75, label: 'Intermédiaire' },
   ] satisfies Language[],
   education: [
     {
@@ -329,47 +376,13 @@ export const PORTFOLIO = {
       detail: 'Collège Saint Michel, Amparibe, Madagascar',
     },
   ] satisfies EducationItem[],
-  competitions: [
-    {
-      title: 'Jeu RPG 2D en pixel art sur la déforestation',
-      period: 'Hackathon Game (Devpost) · Mai 2026',
-      description:
-        'Conception et développement d’un jeu narratif 2D en pixel art, sensibilisant à la déforestation, où les choix du joueur impactent l’état de la forêt en temps réel.',
-      details: [
-        { label: 'Moteur et gameplay', value: 'JavaScript, Maki, Phaser.js' },
-        { label: 'Front-end et build', value: 'HTML5, CSS, Vite, npm' },
-        { label: 'Gestion de version', value: 'Git, GitHub' },
-      ],
-      href: 'https://maki-2d-pixel-rpg.vercel.app/',
-      linkLabel: 'Voir le jeu',
-    },
-    {
-      title: 'Solution IoT/IA pour l’agriculture',
-      period: 'Hackathon RedShalk — 2e place · Décembre 2024',
-      description:
-        'Architecture IoT/IA : collecte de données environnementales et recommandations intelligentes.',
-      details: [
-        {
-          label: 'Back-end et API',
-          value: 'Java, Servlets, API REST, CRUD, RBAC',
-        },
-        {
-          label: 'Intelligence Artificielle',
-          value: 'Python',
-        },
-        {
-          label: 'Base de données',
-          value: 'PostgreSQL',
-        },
-      ],
-      projectSlug: 'hackathon-redshalk',
-    },
-  ] satisfies CompetitionItem[],
+  competitions: COMPETITIONS,
   projects: [
     {
       slug: 'mean-centre-commercial',
       title: 'Plateforme web — centre commercial',
       category: 'Projet MEAN — Master 1',
+      image: '/projects/mean-centre-commercial.png',
       preview:
         'Application web MEAN pour un centre commercial : profils Admin, Boutique et Acheteurs, API REST et base MongoDB.',
       about:
@@ -383,6 +396,7 @@ export const PORTFOLIO = {
       slug: 'rush-school',
       title: 'Rush School — K Beauty Academy',
       category: 'Site vitrine — Formations beauté',
+      image: '/projects/rush-school.png',
       preview:
         'Site vitrine pour une académie beauté : formations ongles & cils, boutique, avis élèves et prise de rendez-vous.',
       externalUrl: 'https://rushschool.vercel.app/',
@@ -406,8 +420,10 @@ export const PORTFOLIO = {
     },
     {
       slug: 'plateforme-recrutement',
-      title: 'Plateforme de recrutement',
+      title: 'Talentago — Plateforme de recrutement',
       category: 'Stage — NextHope',
+      image: '/projects/talentago.png',
+      externalUrl: 'https://talentago.serenity.mg/',
       about:
         'Développement d’une plateforme de recrutement full-stack : front-end Vue.js, back-end Node.js, API REST, PostgreSQL, stockage AWS S3, versioning Git/Bitbucket.',
       achievements: [
@@ -419,6 +435,7 @@ export const PORTFOLIO = {
       slug: 'hackathon-redshalk',
       title: 'Solution IoT/IA pour l’agriculture',
       category: 'Hackathon RedShalk — 2e place',
+      image: '/projects/hackathon-redshalk.png',
       about:
         'Conception et développement en équipe d’une architecture IoT/IA permettant la collecte de données environnementales et la génération de recommandations intelligentes.',
       achievements: [

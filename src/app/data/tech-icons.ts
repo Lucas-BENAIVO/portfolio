@@ -26,7 +26,7 @@ export const TECH_ICONS = {
   dwh: devicon('azuresqldatabase', 'azuresqldatabase'),
   postman: simple('postman', 'FF6C37'),
   docker: devicon('docker', 'docker'),
-  notion: simple('notion'),
+  notion: simple('notion', '000000'),
   git: devicon('git', 'git'),
   github: devicon('github', 'github'),
   bitbucket: devicon('bitbucket', 'bitbucket'),

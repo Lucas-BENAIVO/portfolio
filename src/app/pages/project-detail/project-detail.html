@@ -1,31 +1,29 @@
 <div class="shell shell--project">
+  <app-site-header />
   <div class="shell__card">
     <main class="shell__main">
-    <section class="project-detail">
-      <a class="back-link" routerLink="/summary">
-        <span aria-hidden="true">←</span> Retour au résumé
-      </a>
+      <section class="project-detail page page-enter">
+        <a class="back-link" routerLink="/" fragment="resume" appReveal>
+          <span aria-hidden="true">←</span> Retour
+        </a>
 
-      <div class="project-detail__mockup" aria-hidden="true">
-        <div class="project-detail__phone">
-          <div class="project-detail__screen"></div>
+        <header class="page-head page-head--compact" appReveal>
+          <h1 class="page-head__title" appReveal [appRevealClip]="true" [appRevealDelay]="60">{{ project.title }}</h1>
+          <p class="page-head__sub" appReveal [appRevealDelay]="130">{{ project.category }}</p>
+        </header>
+
+        <div class="project-detail__body" appReveal [appRevealDelay]="100">
+          <h2 class="skill-category__label">À propos</h2>
+          <p class="project-detail__about">{{ project.about }}</p>
+
+          <h2 class="skill-category__label">Réalisations</h2>
+          <ul class="project-detail__achievements">
+            @for (item of project.achievements; track item; let i = $index) {
+              <li appReveal [appRevealDelay]="140 + i * 70">{{ item }}</li>
+            }
+          </ul>
         </div>
-      </div>
-
-      <h1 class="project-detail__title">{{ project.title }}</h1>
-      <p class="project-detail__category">{{ project.category }}</p>
-
-      <h2 class="section-title">À propos du projet</h2>
-      <p class="project-detail__about">{{ project.about }}</p>
-
-      <h2 class="section-title">Réalisations</h2>
-      <ul class="project-detail__achievements">
-        @for (item of project.achievements; track item) {
-          <li>{{ item }}</li>
-        }
-      </ul>
-    </section>
+      </section>
     </main>
-    <app-bottom-nav />
   </div>
 </div>
