@@ -196,8 +196,6 @@ export const PORTFOLIO = {
         { name: 'TypeScript', icon: TECH_ICONS.typescript },
         { name: 'Python', icon: TECH_ICONS.python },
         { name: 'Java', icon: TECH_ICONS.java },
-        { name: 'C#', icon: TECH_ICONS.csharp },
-        { name: 'PHP', icon: TECH_ICONS.php },
       ],
     },
     {
@@ -218,8 +216,6 @@ export const PORTFOLIO = {
         { name: 'FastAPI', icon: TECH_ICONS.fastapi },
         { name: 'Spring', icon: TECH_ICONS.spring },
         { name: '.NET', icon: TECH_ICONS.dotnet },
-        { name: 'Laravel', icon: TECH_ICONS.laravel },
-        { name: 'Symfony', icon: TECH_ICONS.symfony },
       ],
     },
     {
@@ -242,6 +238,7 @@ export const PORTFOLIO = {
       skills: [
         { name: 'Postman', icon: TECH_ICONS.postman },
         { name: 'Docker', icon: TECH_ICONS.docker },
+        { name: 'Notion', icon: TECH_ICONS.notion },
       ],
     },
     {
