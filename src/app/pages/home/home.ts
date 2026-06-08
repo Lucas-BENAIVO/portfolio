@@ -1,13 +1,14 @@
 import { isPlatformBrowser } from '@angular/common';
 import { afterNextRender, Component, inject, PLATFORM_ID } from '@angular/core';
-import { ActivatedRoute, RouterLink } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { PORTFOLIO, type Project } from '../../data/portfolio.data';
+import { WorkCard } from '../../components/work-card/work-card';
 import { RevealOnScrollDirective } from '../../directives/reveal-on-scroll.directive';
 import { scrollToSection } from '../../utils/scroll-section';
 
 @Component({
   selector: 'app-home',
-  imports: [RevealOnScrollDirective, RouterLink],
+  imports: [RevealOnScrollDirective, WorkCard],
   templateUrl: './home.html',
   styleUrls: [
     './home.scss',

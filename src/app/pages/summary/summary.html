@@ -1,62 +1,25 @@
 <section class="page summary-page">
   <header class="page-head" appReveal>
-    <h1 class="page-head__title" appReveal [appRevealClip]="true" [appRevealDelay]="60">Résumé</h1>
+    <h1 class="page-head__title" appReveal [appRevealClip]="true" [appRevealDelay]="60">Réalisations</h1>
     <p class="page-head__sub" appReveal [appRevealDelay]="140">Projets, compétitions &amp; formation</p>
   </header>
 
   <div class="work-section" appReveal [appRevealDelay]="80">
-    <div class="work-section__top">
-      <h2 class="work-section__heading">Projets phares</h2>
-      <a class="btn-pill" routerLink="/experience">Voir l’expérience</a>
-    </div>
+    <h2 class="work-section__heading">Projets phares</h2>
 
     <div class="work-grid">
       @for (project of featuredProjects; track project.slug; let i = $index) {
-        @if (project.externalUrl) {
-          <a
-            [class]="'work-card work-card--' + (i % 4) + (project.image ? ' work-card--has-media' : '')"
-            [href]="project.externalUrl"
-            target="_blank"
-            rel="noopener noreferrer"
-            appReveal
-            [appRevealDelay]="120 + i * 90"
-          >
-            @if (project.image) {
-              <div class="work-card__media">
-                <img [src]="project.image" [alt]="project.title" loading="lazy" decoding="async" />
-              </div>
-            }
-            <span class="work-card__arrow" aria-hidden="true">↗</span>
-            <div class="work-card__content">
-              <span class="work-card__title">{{ project.title }}</span>
-              <span class="work-card__meta">{{ project.category }}</span>
-              @if (project.preview) {
-                <span class="work-card__desc">{{ project.preview }}</span>
-              }
-            </div>
-          </a>
-        } @else {
-          <a
-            [class]="'work-card work-card--' + (i % 4) + (project.image ? ' work-card--has-media' : '')"
-            [routerLink]="['/project', project.slug]"
-            appReveal
-            [appRevealDelay]="120 + i * 90"
-          >
-            @if (project.image) {
-              <div class="work-card__media">
-                <img [src]="project.image" [alt]="project.title" loading="lazy" decoding="async" />
-              </div>
-            }
-            <span class="work-card__arrow" aria-hidden="true">↗</span>
-            <div class="work-card__content">
-              <span class="work-card__title">{{ project.title }}</span>
-              <span class="work-card__meta">{{ project.category }}</span>
-              @if (project.preview) {
-                <span class="work-card__desc">{{ project.preview }}</span>
-              }
-            </div>
-          </a>
-        }
+        <app-work-card
+          [title]="project.title"
+          [meta]="project.category"
+          [description]="project.preview"
+          [image]="project.image"
+          [colorIndex]="i"
+          [revealDelay]="120 + i * 90"
+          [viewHref]="project.externalUrl"
+          [viewRouterLink]="project.externalUrl ? undefined : ['/project', project.slug]"
+          [githubUrl]="project.githubUrl"
+        />
       }
     </div>
   </div>
@@ -65,47 +28,18 @@
     <h2 class="work-section__heading">Compétition &amp; récompense</h2>
     <div class="work-grid work-grid--compact">
       @for (item of portfolio.competitions; track item.title; let i = $index) {
-        @if (item.projectSlug) {
-          <a
-            [class]="'work-card work-card--' + ((i + 2) % 4) + (item.image ? ' work-card--has-media' : '')"
-            [routerLink]="['/project', item.projectSlug]"
-            appReveal
-            [appRevealDelay]="140 + i * 90"
-          >
-            @if (item.image) {
-              <div class="work-card__media">
-                <img [src]="item.image" [alt]="item.title" loading="lazy" decoding="async" />
-              </div>
-            }
-            <span class="work-card__arrow" aria-hidden="true">↗</span>
-            <div class="work-card__content">
-              <span class="work-card__title">{{ item.title }}</span>
-              <span class="work-card__meta">{{ item.period }}</span>
-              <span class="work-card__desc">{{ item.description }}</span>
-            </div>
-          </a>
-        } @else if (item.href) {
-          <a
-            [class]="'work-card work-card--' + ((i + 2) % 4) + (item.image ? ' work-card--has-media' : '')"
-            [href]="item.href"
-            target="_blank"
-            rel="noopener noreferrer"
-            appReveal
-            [appRevealDelay]="140 + i * 90"
-          >
-            @if (item.image) {
-              <div class="work-card__media">
-                <img [src]="item.image" [alt]="item.title" loading="lazy" decoding="async" />
-              </div>
-            }
-            <span class="work-card__arrow" aria-hidden="true">↗</span>
-            <div class="work-card__content">
-              <span class="work-card__title">{{ item.title }}</span>
-              <span class="work-card__meta">{{ item.period }}</span>
-              <span class="work-card__desc">{{ item.description }}</span>
-            </div>
-          </a>
-        }
+        <app-work-card
+          [title]="item.title"
+          [meta]="item.period"
+          [description]="item.description"
+          [image]="item.image"
+          [colorIndex]="i + 2"
+          [compact]="true"
+          [revealDelay]="140 + i * 90"
+          [viewHref]="item.href"
+          [viewRouterLink]="item.href ? undefined : item.projectSlug ? ['/project', item.projectSlug] : undefined"
+          [githubUrl]="item.githubUrl"
+        />
       }
     </div>
   </div>

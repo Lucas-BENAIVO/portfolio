@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
 import { PORTFOLIO, type Project } from '../../data/portfolio.data';
+import { WorkCard } from '../../components/work-card/work-card';
 import { RevealOnScrollDirective } from '../../directives/reveal-on-scroll.directive';
 
 @Component({
   selector: 'app-summary',
-  imports: [RouterLink, RevealOnScrollDirective],
+  imports: [RevealOnScrollDirective, WorkCard],
   templateUrl: './summary.html',
   styleUrl: './summary.scss',
   host: { class: 'page-enter' },

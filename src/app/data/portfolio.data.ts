@@ -59,6 +59,8 @@ export interface CompetitionItem {
   /** Lien externe (si pas de page détail interne) */
   href?: string;
   linkLabel?: string;
+  /** Lien GitHub ; chaîne vide = bouton visible, lien à renseigner */
+  githubUrl?: string;
 }
 
 export interface ExperienceDetail {
@@ -90,10 +92,12 @@ export interface Project {
   about: string;
   achievements: string[];
   image?: string;
-  /** Lien direct vers le site en ligne (carte Summary sans page détail obligatoire) */
+  /** Lien direct vers le site en ligne (bouton Voir) */
   externalUrl?: string;
   /** Court texte sur la carte Featured (page Summary) */
   preview?: string;
+  /** Lien GitHub ; chaîne vide = bouton visible, lien à renseigner */
+  githubUrl?: string;
 }
 
 const EXPERIENCE: ExperienceItem[] = [
@@ -165,6 +169,7 @@ const COMPETITIONS: CompetitionItem[] = [
     ],
     href: 'https://maki-2d-pixel-rpg.vercel.app/',
     linkLabel: 'Voir le jeu',
+    githubUrl: 'https://github.com/Lucas-BENAIVO/maki-2d-pixel-rpg',
   },
   {
     title: 'Solution IoT/IA pour l’agriculture',
@@ -225,7 +230,7 @@ export const PORTFOLIO = {
   ] satisfies ContactItem[],
   nav: [
     { label: 'Accueil', path: '', section: 'home', icon: 'home' },
-    { label: 'Résumé', path: 'summary', section: 'resume', icon: 'summary' },
+    { label: 'Réalisations', path: 'summary', section: 'resume', icon: 'summary' },
     { label: 'Expérience', path: 'experience', section: 'experience', icon: 'experience' },
     { label: 'Compétences', path: 'skills', section: 'skills', icon: 'skills' },
   ] satisfies NavItem[],
@@ -385,6 +390,7 @@ export const PORTFOLIO = {
       image: '/projects/mean-centre-commercial.png',
       preview:
         'Application web MEAN pour un centre commercial : profils Admin, Boutique et Acheteurs, API REST et base MongoDB.',
+      githubUrl: 'https://github.com/Lucas-BENAIVO/ShoppingMall_boutique_front',
       about:
         'Conception et développement en binôme d’une application web MEAN pour un centre commercial, avec gestion des profils Admin, Boutique et Acheteurs. Stack : Angular, TypeScript, Node.js, Express, MongoDB, API REST, Git/GitHub.',
       achievements: [
@@ -400,6 +406,7 @@ export const PORTFOLIO = {
       preview:
         'Site vitrine pour une académie beauté : formations ongles & cils, boutique, avis élèves et prise de rendez-vous.',
       externalUrl: 'https://rushschool.vercel.app/',
+      githubUrl: 'https://github.com/Lucas-BENAIVO/rushschool',
       about:
         'Site vitrine pour une académie de formations en prothésie ongulaire et extensions de cils : catalogue des formations, boutique, témoignages élèves et prise de rendez-vous.',
       achievements: [

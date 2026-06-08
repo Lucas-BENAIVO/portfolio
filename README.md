@@ -11,14 +11,23 @@ Application Angular (thème sombre, glassmorphism) présentant mon profil, mes p
 | Section | Contenu |
 |---------|---------|
 | **Accueil** | Présentation, contacts, téléchargement du CV |
-| **Résumé** | Projets phares, compétitions & récompenses, formation & certificats |
+| **Réalisations** | Projets phares, compétitions & récompenses, formation & certificats |
 | **Expérience** | Stages NextHope (Talentago, Mass In) et Digital Afrique Telecom (BI/IA) |
 | **Compétences** | Stack technique, savoir-être, langues, centres d'intérêt |
 
+Chaque carte projet propose deux actions :
+- **Voir** — site en ligne ou page détail du projet
+- **Code** — dépôt GitHub (sauf Solution IoT/IA, pas de code public)
+
 ### Projets phares
 
-- **Rush School — K Beauty Academy** — site vitrine (formations beauté, boutique, rendez-vous)
-- **Plateforme web — centre commercial** — application MEAN (Master 1)
+- **Rush School — K Beauty Academy** — site vitrine (formations beauté, boutique, rendez-vous) · [Code](https://github.com/Lucas-BENAIVO/rushschool)
+- **Plateforme web — centre commercial** — application MEAN (Master 1) · [Code](https://github.com/Lucas-BENAIVO/ShoppingMall_boutique_front)
+
+### Compétitions
+
+- **Jeu RPG 2D en pixel art** — [Jeu](https://maki-2d-pixel-rpg.vercel.app/) · [Code](https://github.com/Lucas-BENAIVO/maki-2d-pixel-rpg)
+- **Solution IoT/IA pour l'agriculture** — page détail uniquement (pas de dépôt public)
 
 ### Pages détail projet
 
@@ -41,13 +50,14 @@ npm start
 
 ## Personnalisation
 
-Éditez `src/app/data/portfolio.data.ts` (nom, contacts, expériences, projets, compétences, formation…).
+Éditez `src/app/data/portfolio.data.ts` (nom, contacts, expériences, projets, liens GitHub, compétences, formation…).
 
 ## Structure
 
 ```
 src/app/
+├── components/work-card/   cartes projet (Voir + Code)
 ├── data/portfolio.data.ts
-├── layout/          shell + bottom-nav
-└── pages/           home (page unique), project-detail
+├── layout/                 shell + bottom-nav
+└── pages/                  home (page unique), project-detail
 ```
