@@ -18,8 +18,7 @@ export class WorkCard {
   readonly revealDelay = input(0);
   readonly compact = input(false);
   readonly viewHref = input<string>();
-  readonly viewRouterLink = input<string[]>();
-  /** Présent = afficher le bouton Code ; chaîne vide = en attente de lien */
+  readonly detailsRouterLink = input<string[]>();
   readonly githubUrl = input<string | undefined>(undefined);
 
   protected get showCode(): boolean {

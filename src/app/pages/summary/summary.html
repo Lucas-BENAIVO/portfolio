@@ -17,7 +17,7 @@
           [colorIndex]="i"
           [revealDelay]="120 + i * 90"
           [viewHref]="project.externalUrl"
-          [viewRouterLink]="project.externalUrl ? undefined : ['/project', project.slug]"
+          [detailsRouterLink]="['/project', project.slug]"
           [githubUrl]="project.githubUrl"
         />
       }
@@ -37,7 +37,7 @@
           [compact]="true"
           [revealDelay]="140 + i * 90"
           [viewHref]="item.href"
-          [viewRouterLink]="item.href ? undefined : item.projectSlug ? ['/project', item.projectSlug] : undefined"
+          [detailsRouterLink]="item.projectSlug ? ['/project', item.projectSlug] : undefined"
           [githubUrl]="item.githubUrl"
         />
       }

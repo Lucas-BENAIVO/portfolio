@@ -169,6 +169,7 @@ const COMPETITIONS: CompetitionItem[] = [
     ],
     href: 'https://maki-2d-pixel-rpg.vercel.app/',
     linkLabel: 'Voir le jeu',
+    projectSlug: 'maki-2d-pixel-rpg',
     githubUrl: 'https://github.com/Lucas-BENAIVO/maki-2d-pixel-rpg',
   },
   {
@@ -230,7 +231,7 @@ export const PORTFOLIO = {
   ] satisfies ContactItem[],
   nav: [
     { label: 'Accueil', path: '', section: 'home', icon: 'home' },
-    { label: 'Réalisations', path: 'summary', section: 'resume', icon: 'summary' },
+    { label: 'Réalisations', path: 'realisations', section: 'realisations', icon: 'summary' },
     { label: 'Expérience', path: 'experience', section: 'experience', icon: 'experience' },
     { label: 'Compétences', path: 'skills', section: 'skills', icon: 'skills' },
   ] satisfies NavItem[],
@@ -392,10 +393,11 @@ export const PORTFOLIO = {
         'Application web MEAN pour un centre commercial : profils Admin, Boutique et Acheteurs, API REST et base MongoDB.',
       githubUrl: 'https://github.com/Lucas-BENAIVO/ShoppingMall_boutique_front',
       about:
-        'Conception et développement en binôme d’une application web MEAN pour un centre commercial, avec gestion des profils Admin, Boutique et Acheteurs. Stack : Angular, TypeScript, Node.js, Express, MongoDB, API REST, Git/GitHub.',
+        'Application web de gestion pour un centre commercial, centralisant les parcours des administrateurs, des boutiques et des acheteurs.',
       achievements: [
-        'Architecture multi-rôles (Admin, Boutique, Acheteurs).',
-        'Projet réalisé dans le cadre du Master 1 — mars 2026.',
+        'Développement full stack avec Angular, TypeScript, Node.js, Express, MongoDB, API REST, Git et GitHub.',
+        'Mise en place d’une architecture multi-rôles pour les administrateurs, boutiques et acheteurs.',
+        'Projet réalisé dans le cadre du Master 1 en mars 2026.',
       ],
     },
     {
@@ -408,10 +410,12 @@ export const PORTFOLIO = {
       externalUrl: 'https://rushschool.vercel.app/',
       githubUrl: 'https://github.com/Lucas-BENAIVO/rushschool',
       about:
-        'Site vitrine pour une académie de formations en prothésie ongulaire et extensions de cils : catalogue des formations, boutique, témoignages élèves et prise de rendez-vous.',
+        'Site vitrine d’une académie de formations en prothésie ongulaire et extensions de cils, avec catalogue des offres, boutique professionnelle, témoignages d’élèves et prise de rendez-vous.',
       achievements: [
-        'Interface moderne, responsive et orientée conversion.',
-        'Déployé en production sur Vercel.',
+        'Développement du front-end avec Next.js, React, TypeScript et Tailwind CSS.',
+        'Mise en place du catalogue des formations, de la boutique en ligne, des avis élèves et de la réservation d’appel.',
+        'Conception d’une interface responsive et orientée conversion.',
+        'Déploiement en production sur Vercel avec Git et GitHub.',
       ],
     },
     {
@@ -419,8 +423,11 @@ export const PORTFOLIO = {
       title: 'Plateforme BI augmentée par l’IA',
       category: 'Stage — Digital Afrique Telecom',
       about:
-        'MVP de Business Intelligence avec Next.js, Tailwind CSS, Node.js, ETL et modules IA en Python : prédiction des revenus, détection d’anomalies et chatbot. Données : PostgreSQL et entrepôt (DWH).',
+        'MVP de Business Intelligence intégrant prédiction des revenus, détection d’anomalies et chatbot pour accompagner la prise de décision métier.',
       achievements: [
+        'Développement du front-end avec Next.js et Tailwind CSS.',
+        'Mise en place du back-end et des pipelines de données avec Node.js, ETL et Python.',
+        'Stockage et exploitation des données avec PostgreSQL et un entrepôt de données.',
         'Intégration de pipelines ETL et d’API testées avec Postman.',
         'Fonctionnalités IA pour l’aide à la décision métier.',
       ],
@@ -432,10 +439,26 @@ export const PORTFOLIO = {
       image: '/projects/talentago.png',
       externalUrl: 'https://talentago.serenity.mg/',
       about:
-        'Développement d’une plateforme de recrutement full-stack : front-end Vue.js, back-end Node.js, API REST, PostgreSQL, stockage AWS S3, versioning Git/Bitbucket.',
+        'Plateforme de recrutement dédiée au traitement des candidatures et à la gestion des profils candidats et recruteurs.',
       achievements: [
-        'Mise en place d’une architecture full-stack complète.',
-        'En parallèle : refonte e-commerce « Mass In » (Shopify, Odoo).',
+        'Développement du front-end avec Vue.js.',
+        'Conception du back-end et des API avec Node.js, API REST et PostgreSQL.',
+        'Gestion des fichiers et du stockage cloud avec AWS S3.',
+        'Suivi de version avec Git et Bitbucket.',
+        'En parallèle, participation à la refonte e-commerce « Mass In » avec Shopify et Odoo.',
+      ],
+    },
+    {
+      slug: 'maki-2d-pixel-rpg',
+      title: 'Jeu RPG 2D en pixel art sur la déforestation',
+      category: 'Hackathon Game (Devpost) · Mai 2026',
+      image: '/projects/jeu-rpg-2d.png',
+      about:
+        'Jeu narratif 2D en pixel art sur la déforestation, où les choix du joueur modifient en temps réel l’état de la forêt.',
+      achievements: [
+        'Conception du moteur et du gameplay avec JavaScript, Maki et Phaser.js.',
+        'Développement du front-end et du pipeline de build avec HTML5, CSS, Vite et npm.',
+        'Gestion de version avec Git et GitHub.',
       ],
     },
     {
@@ -444,12 +467,12 @@ export const PORTFOLIO = {
       category: 'Hackathon RedShalk — 2e place',
       image: '/projects/hackathon-redshalk.png',
       about:
-        'Conception et développement en équipe d’une architecture IoT/IA permettant la collecte de données environnementales et la génération de recommandations intelligentes.',
+        'Solution IoT et IA pour l’agriculture, combinant collecte de données environnementales et recommandations intelligentes pour les exploitants.',
       achievements: [
-        '2e place au Hackathon RedShalk — décembre 2024.',
-        'Back-end et API : Java, Servlets, API REST, CRUD, RBAC.',
-        'Intelligence Artificielle : Python.',
-        'Base de données : PostgreSQL.',
+        '2e place au Hackathon RedShalk en décembre 2024.',
+        'Développement du back-end et des API avec Java, Servlets, API REST, CRUD et RBAC.',
+        'Intégration de modules d’intelligence artificielle avec Python.',
+        'Modélisation et persistance des données avec PostgreSQL.',
       ],
     },
   ] satisfies Project[],

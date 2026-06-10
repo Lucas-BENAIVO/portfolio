@@ -9,6 +9,7 @@ export const routes: Routes = [
     component: Shell,
     children: [
       { path: '', component: Home, title: 'Lucas RABENAIVO' },
+      { path: 'realisations', redirectTo: '' },
       { path: 'summary', redirectTo: '' },
       { path: 'experience', redirectTo: '' },
       { path: 'skills', redirectTo: '' },
