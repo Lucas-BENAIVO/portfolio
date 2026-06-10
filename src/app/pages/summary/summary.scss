@@ -73,6 +73,6 @@
 @media (max-width: 640px) {
   .work-grid {
     grid-template-columns: 1fr;
+    align-items: start;
   }
-
 }

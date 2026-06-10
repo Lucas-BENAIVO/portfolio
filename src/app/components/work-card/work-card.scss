@@ -1,7 +1,7 @@
 :host {
   display: block;
-  height: 100%;
   min-width: 0;
+  height: auto;
 }
 
 .work-card {
@@ -11,25 +11,25 @@
   min-height: clamp(220px, 28vw, 320px);
   padding: 1.25rem 1.5rem 1.5rem;
   border-radius: 4px;
-  overflow: hidden;
+  overflow: visible;
   color: inherit;
-  height: 100%;
+  height: auto;
 }
 
 .work-card__content {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  flex: 1;
+  flex: 1 1 auto;
   width: 100%;
   min-width: 0;
-  min-height: 0;
+  min-height: auto;
 }
 
 .work-card--has-media {
   padding: 0;
   min-height: auto;
-  overflow: hidden;
+  overflow: visible;
 
   .work-card__content {
     padding: 1rem 1.25rem 1rem;
@@ -105,19 +105,14 @@
 }
 
 .work-card__desc {
+  flex-shrink: 0;
   font-size: 0.8125rem;
   line-height: 1.5;
   color: var(--text-secondary);
   width: 100%;
   margin: 0;
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-}
-
-.work-card--compact .work-card__desc {
-  -webkit-line-clamp: 2;
+  overflow: visible;
+  display: block;
 }
 
 .work-card__actions {
