@@ -9,7 +9,7 @@ import {
 } from '@angular/core';
 import { Router } from '@angular/router';
 import { PORTFOLIO } from '../../data/portfolio.data';
-import { scrollToSection } from '../../utils/scroll-section';
+import { scrollToSectionClean } from '../../utils/scroll-section';
 import { downloadCv } from '../../utils/download-cv';
 
 const MENU_CLOSE_MS = 380;
@@ -68,12 +68,11 @@ export class SiteHeader implements AfterViewInit, OnDestroy {
 
     const section = document.getElementById(sectionId);
     if (!section) {
-      void this.router.navigate(['/'], { fragment: sectionId });
+      void this.router.navigate(['/'], { state: { scrollTo: sectionId } });
       return;
     }
 
-    history.replaceState(null, '', `#${sectionId}`);
-    scrollToSection(sectionId);
+    scrollToSectionClean(sectionId);
     this.activeSection.set(sectionId);
   }
 

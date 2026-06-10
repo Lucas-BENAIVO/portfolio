@@ -46,7 +46,7 @@ npm install
 npm start
 ```
 
-→ [http://localhost:4200](http://localhost:4200) · sections : `#home`, `#realisations`, `#experience`, `#skills`, `#contact`
+→ [http://localhost:4200](http://localhost:4200)
 
 ## Personnalisation
 

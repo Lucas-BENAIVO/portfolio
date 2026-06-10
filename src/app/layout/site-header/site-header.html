@@ -16,7 +16,7 @@
       <a
         class="site-header__link"
         [class.site-header__link--active]="activeSection() === item.section"
-        [href]="'#' + item.section"
+        [href]="'/'"
         (click)="scrollTo(item.section, $event)"
       >
         {{ item.label }}
@@ -25,7 +25,7 @@
     <a
       class="site-header__link"
       [class.site-header__link--active]="activeSection() === 'contact'"
-      href="#contact"
+      href="/"
       (click)="scrollTo('contact', $event)"
     >
       Contact
@@ -70,7 +70,7 @@
         <a
           class="site-menu__link"
           [class.site-menu__link--active]="activeSection() === item.section"
-          [href]="'#' + item.section"
+          [href]="'/'"
           (click)="scrollTo(item.section, $event)"
         >
           {{ item.label }}
@@ -79,7 +79,7 @@
       <a
         class="site-menu__link"
         [class.site-menu__link--active]="activeSection() === 'contact'"
-        href="#contact"
+        href="/"
         (click)="scrollTo('contact', $event)"
       >
         Contact

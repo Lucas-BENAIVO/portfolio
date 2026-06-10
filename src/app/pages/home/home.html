@@ -1,6 +1,6 @@
 <div class="home-page">
   <section id="home" class="hero hero--animated">
-    <a class="hero__location" href="#contact" (click)="scrollTo('contact', $event)" appReveal [appRevealDelay]="400">
+    <a class="hero__location" href="/" (click)="scrollTo('contact', $event)" appReveal [appRevealDelay]="400">
       <span class="hero__location-icon" aria-hidden="true"></span>
       <span class="hero__location-text">{{ locationLabel }}</span>
     </a>
@@ -299,7 +299,7 @@
 
       <div class="site-footer__bar">
         <span class="site-footer__copy">© {{ currentYear }} Lucas RABENAIVO</span>
-        <a class="site-footer__top" href="#home" (click)="scrollTo('home', $event)">Retour en haut ↗</a>
+        <a class="site-footer__top" href="/" (click)="scrollTo('home', $event)">Retour en haut ↗</a>
       </div>
     </div>
   </footer>

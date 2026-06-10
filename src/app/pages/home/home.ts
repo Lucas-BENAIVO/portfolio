@@ -4,7 +4,12 @@ import { ActivatedRoute } from '@angular/router';
 import { PORTFOLIO, type Project } from '../../data/portfolio.data';
 import { WorkCard } from '../../components/work-card/work-card';
 import { RevealOnScrollDirective } from '../../directives/reveal-on-scroll.directive';
-import { scrollToSection } from '../../utils/scroll-section';
+import {
+  normalizeSectionId,
+  scrollToSection,
+  scrollToSectionClean,
+  setCleanUrl,
+} from '../../utils/scroll-section';
 
 @Component({
   selector: 'app-home',
@@ -49,19 +54,30 @@ export class Home {
       }
 
       const main = document.querySelector('.shell__main') as HTMLElement | null;
+      const scrollTarget = history.state?.scrollTo as string | undefined;
       const fragment = this.route.snapshot.fragment;
 
-      if (!fragment && main) {
-        main.scrollTop = 0;
+      if (scrollTarget) {
+        setTimeout(() => scrollToSectionClean(scrollTarget), 120);
+        return;
       }
 
       if (fragment) {
-        setTimeout(() => scrollToSection(fragment), 120);
+        setTimeout(
+          () => scrollToSectionClean(normalizeSectionId(fragment)),
+          120
+        );
+        return;
+      }
+
+      if (main) {
+        main.scrollTop = 0;
+        setCleanUrl();
       }
 
       this.route.fragment.subscribe((f) => {
         if (f) {
-          setTimeout(() => scrollToSection(f), 80);
+          setTimeout(() => scrollToSectionClean(normalizeSectionId(f)), 80);
         }
       });
     });
@@ -69,7 +85,6 @@ export class Home {
 
   protected scrollTo(sectionId: string, event: Event): void {
     event.preventDefault();
-    history.replaceState(null, '', `#${sectionId}`);
-    scrollToSection(sectionId);
+    scrollToSectionClean(sectionId);
   }
 }
