@@ -18,8 +18,10 @@
   align-items: stretch;
 
   > app-work-card {
-    display: block;
+    display: flex;
+    flex-direction: column;
     min-width: 0;
+    height: 100%;
   }
 }
 
