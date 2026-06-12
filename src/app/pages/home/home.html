@@ -2,7 +2,7 @@
   <section id="home" class="hero hero--animated">
     <a class="hero__location" href="/" (click)="scrollTo('contact', $event)" appReveal [appRevealDelay]="400">
       <span class="hero__location-icon" aria-hidden="true"></span>
-      <span class="hero__location-text">{{ locationLabel }}</span>
+      <span class="hero__location-text">{{ ui().locationLabel }}</span>
     </a>
 
     <div class="hero__content">
@@ -10,7 +10,7 @@
         <img
           class="hero__photo"
           src="/image.png"
-          [alt]="'Photo de ' + portfolio.name"
+          [alt]="ui().photoOf + ' ' + portfolio().name"
           width="432"
           height="577"
           decoding="async"
@@ -19,32 +19,32 @@
       </div>
 
       <div class="hero__title">
-        <span class="hero__title-line">{{ nameFirst }}</span>
-        <span class="hero__title-line">{{ nameLast }}</span>
+        <span class="hero__title-line">{{ nameFirst() }}</span>
+        <span class="hero__title-line">{{ nameLast() }}</span>
       </div>
 
       <p class="hero__role">
-        <span class="hero__role-line">{{ roleLine1 }}</span>
-        <span class="hero__role-line">{{ roleLine2 }}</span>
+        <span class="hero__role-line">{{ roleLine1() }}</span>
+        <span class="hero__role-line">{{ roleLine2() }}</span>
       </p>
     </div>
   </section>
 
   <section id="about" class="intro">
-    <p class="intro__lead">{{ portfolio.summary }}</p>
+    <p class="intro__lead">{{ portfolio().summary }}</p>
   </section>
 
   <section id="realisations" class="page summary-page">
     <header class="section-head">
-      <span class="section-label">Réalisations</span>
-      <p class="section-head__title">Projets, compétitions &amp; formation</p>
+      <span class="section-label">{{ ui().realisations }}</span>
+      <p class="section-head__title">{{ ui().realisationsSubtitle }}</p>
     </header>
 
     <div class="work-section" appReveal [appRevealDelay]="80">
-      <h3 class="work-section__heading">Projets phares</h3>
+      <h3 class="work-section__heading">{{ ui().featuredProjects }}</h3>
 
       <div class="work-grid">
-        @for (project of featuredProjects; track project.slug; let i = $index) {
+        @for (project of featuredProjects(); track project.slug; let i = $index) {
           <app-work-card
             [title]="project.title"
             [meta]="project.category"
@@ -53,7 +53,7 @@
             [colorIndex]="i"
             [revealDelay]="120 + i * 90"
             [viewHref]="project.externalUrl"
-            [detailsRouterLink]="['/project', project.slug]"
+            [detailsRouterLink]="projectLink(project.slug)"
             [githubUrl]="project.githubUrl"
           />
         }
@@ -61,9 +61,9 @@
     </div>
 
     <div class="work-section" appReveal [appRevealDelay]="100">
-      <h3 class="work-section__heading">Compétition &amp; récompense</h3>
+      <h3 class="work-section__heading">{{ ui().competitions }}</h3>
       <div class="work-grid work-grid--compact">
-        @for (item of portfolio.competitions; track item.title; let i = $index) {
+        @for (item of portfolio().competitions; track item.title; let i = $index) {
           <app-work-card
             [title]="item.title"
             [meta]="item.period"
@@ -73,7 +73,7 @@
             [compact]="true"
             [revealDelay]="140 + i * 90"
             [viewHref]="item.href"
-            [detailsRouterLink]="item.projectSlug ? ['/project', item.projectSlug] : undefined"
+            [detailsRouterLink]="item.projectSlug ? projectLink(item.projectSlug) : undefined"
             [githubUrl]="item.githubUrl"
           />
         }
@@ -81,9 +81,9 @@
     </div>
 
     <div class="work-section" appReveal [appRevealDelay]="120">
-      <h3 class="work-section__heading">Formation &amp; certificats</h3>
+      <h3 class="work-section__heading">{{ ui().education }}</h3>
       <ul class="edu-list">
-        @for (edu of portfolio.education; track edu.title; let i = $index) {
+        @for (edu of portfolio().education; track edu.title; let i = $index) {
           <li class="edu-list__item" appReveal [appRevealDelay]="160 + i * 70">
             <div class="edu-list__head">
               <h4 class="edu-list__title">{{ edu.title }}</h4>
@@ -100,12 +100,12 @@
 
   <section id="experience" class="page experience-page">
     <header class="section-head">
-      <span class="section-label">Expérience</span>
-      <p class="section-head__title">Parcours professionnel &amp; missions</p>
+      <span class="section-label">{{ ui().experience }}</span>
+      <p class="section-head__title">{{ ui().experienceSubtitle }}</p>
     </header>
 
     <ul class="timeline">
-      @for (item of portfolio.experience; track item.company; let i = $index) {
+      @for (item of portfolio().experience; track item.company; let i = $index) {
         <li class="timeline__item" appReveal [appRevealDelay]="100 + i * 100">
           <div class="timeline__head">
             <h3 class="timeline__role">{{ item.role }}</h3>
@@ -118,7 +118,7 @@
                 <div class="timeline__mission-head">
                   <h4 class="timeline__mission-title">{{ mission.title }}</h4>
                   @if (mission.inProgress) {
-                    <span class="timeline__mission-badge">En cours</span>
+                    <span class="timeline__mission-badge">{{ ui().inProgress }}</span>
                   }
                 </div>
                 @if (mission.image) {
@@ -133,7 +133,7 @@
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    {{ mission.linkLabel ?? 'Voir le site' }}
+                    {{ mission.linkLabel ?? ui().viewSite }}
                     <span aria-hidden="true">↗</span>
                   </a>
                 }
@@ -153,13 +153,13 @@
     </ul>
   </section>
 
-  <section id="skills" class="page skills-page" aria-label="Compétences">
+  <section id="skills" class="page skills-page" [attr.aria-label]="ui().skillsAria">
     <header class="section-head">
-      <span class="section-label">Compétences</span>
-      <p class="section-head__title">Stack technique, langues &amp; savoir-être</p>
+      <span class="section-label">{{ ui().skills }}</span>
+      <p class="section-head__title">{{ ui().skillsSubtitle }}</p>
     </header>
 
-    @for (category of portfolio.technicalSkills; track category.id; let ci = $index) {
+    @for (category of portfolio().technicalSkills; track category.id; let ci = $index) {
       <section class="skill-category" appReveal [appRevealDelay]="80 + ci * 60">
         <h3 class="skill-category__label">{{ category.label }}</h3>
         <ul class="tech-grid">
@@ -188,18 +188,18 @@
     }
 
     <section class="skill-block" appReveal [appRevealDelay]="100">
-      <h3 class="skill-category__label">Savoir-être</h3>
+      <h3 class="skill-category__label">{{ ui().softSkills }}</h3>
       <ul class="soft-skills">
-        @for (skill of portfolio.softSkills; track skill; let i = $index) {
+        @for (skill of portfolio().softSkills; track skill; let i = $index) {
           <li class="soft-skills__item" appReveal [appRevealDelay]="120 + i * 50">{{ skill }}</li>
         }
       </ul>
     </section>
 
     <section class="skill-block" appReveal [appRevealDelay]="120">
-      <h3 class="skill-category__label">Langues</h3>
+      <h3 class="skill-category__label">{{ ui().languages }}</h3>
       <ul class="lang-list">
-        @for (lang of portfolio.languages; track lang.name; let i = $index) {
+        @for (lang of portfolio().languages; track lang.name; let i = $index) {
           <li class="lang-list__item" appReveal [appRevealDelay]="140 + i * 50">
             <span class="lang-list__name">{{ lang.name }}</span>
             <span class="lang-list__label">{{ lang.label }}</span>
@@ -209,9 +209,9 @@
     </section>
 
     <section class="skill-block interests" appReveal [appRevealDelay]="140">
-      <h3 class="skill-category__label">Centres d'intérêt</h3>
+      <h3 class="skill-category__label">{{ ui().interests }}</h3>
       <ul class="interests__list">
-        @for (interest of portfolio.interests; track interest.label; let i = $index) {
+        @for (interest of portfolio().interests; track interest.label; let i = $index) {
           <li class="interests__item" appReveal [appRevealDelay]="160 + i * 60">
             <span class="interests__icon-wrap" aria-hidden="true">
               @switch (interest.icon) {
@@ -256,15 +256,15 @@
     <div class="site-footer__inner">
       <div class="site-footer__main">
         <div class="site-footer__intro">
-          <span class="site-footer__label">Contact</span>
-          <h2 class="site-footer__title">Travaillons ensemble</h2>
-          @if (contactEmail) {
-            <a class="site-footer__email" [href]="contactEmail.href">{{ contactEmail.value }}</a>
+          <span class="site-footer__label">{{ ui().contactFooter }}</span>
+          <h2 class="site-footer__title">{{ ui().workTogether }}</h2>
+          @if (contactEmail(); as email) {
+            <a class="site-footer__email" [href]="email.href">{{ email.value }}</a>
           }
         </div>
 
         <ul class="site-footer__grid">
-          @for (contact of footerContacts; track contact.label) {
+          @for (contact of footerContacts(); track contact.label) {
             <li class="site-footer__item">
               @if (contact.whatsappHref) {
                 <span class="site-footer__row-label">{{ contact.label }}</span>
@@ -299,7 +299,7 @@
 
       <div class="site-footer__bar">
         <span class="site-footer__copy">© {{ currentYear }} Lucas RABENAIVO</span>
-        <a class="site-footer__top" href="/" (click)="scrollTo('home', $event)">Retour en haut ↗</a>
+        <a class="site-footer__top" href="/" (click)="scrollTo('home', $event)">{{ ui().backToTop }} ↗</a>
       </div>
     </div>
   </footer>

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { PORTFOLIO } from '../../data/portfolio.data';
+import { PORTFOLIO_FR } from '../../data/portfolio.fr';
 import { RevealOnScrollDirective } from '../../directives/reveal-on-scroll.directive';
 
 @Component({
@@ -10,5 +10,5 @@ import { RevealOnScrollDirective } from '../../directives/reveal-on-scroll.direc
   host: { class: 'page-enter' },
 })
 export class SkillsPage {
-  protected readonly portfolio = PORTFOLIO;
+  protected readonly portfolio = PORTFOLIO_FR;
 }

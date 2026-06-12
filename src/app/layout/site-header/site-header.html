@@ -1,22 +1,22 @@
 <header class="site-header">
-  @if (openToWork) {
-    <span class="badge-open site-header__badge">Open to work</span>
+  @if (portfolio().openToWork) {
+    <span class="badge-open site-header__badge">{{ ui().openToWork }}</span>
   }
 
-  <nav class="site-header__nav" aria-label="Navigation principale">
+  <nav class="site-header__nav" [attr.aria-label]="ui().mainNav">
     <a
       class="btn-pill site-header__cv"
-      [href]="cvUrl"
-      [attr.download]="cvDownloadName"
+      [href]="portfolio().cvUrl"
+      [attr.download]="portfolio().cvDownloadName"
       (click)="onDownloadCv($event)"
     >
-      Télécharger le CV
+      {{ ui().downloadCv }}
     </a>
-    @for (item of nav; track item.section) {
+    @for (item of portfolio().nav; track item.section) {
       <a
         class="site-header__link"
         [class.site-header__link--active]="activeSection() === item.section"
-        [href]="'/'"
+        [href]="homeLink()"
         (click)="scrollTo(item.section, $event)"
       >
         {{ item.label }}
@@ -25,24 +25,42 @@
     <a
       class="site-header__link"
       [class.site-header__link--active]="activeSection() === 'contact'"
-      href="/"
+      [href]="homeLink()"
       (click)="scrollTo('contact', $event)"
     >
-      Contact
+      {{ ui().contact }}
     </a>
+    <button
+      type="button"
+      class="site-header__lang"
+      [attr.aria-label]="switchLabel()"
+      (click)="toggleLocale()"
+    >
+      {{ switchLabel() }}
+    </button>
   </nav>
 
-  <button
-    type="button"
-    class="site-header__toggle"
-    [class.site-header__toggle--open]="menuOpen()"
-    [attr.aria-expanded]="menuOpen()"
-    aria-label="Ouvrir le menu"
-    (click)="toggleMenu()"
-  >
-    <span></span>
-    <span></span>
-  </button>
+  <div class="site-header__actions">
+    <button
+      type="button"
+      class="site-header__lang site-header__lang--mobile"
+      [attr.aria-label]="switchLabel()"
+      (click)="toggleLocale()"
+    >
+      {{ switchLabel() }}
+    </button>
+    <button
+      type="button"
+      class="site-header__toggle"
+      [class.site-header__toggle--open]="menuOpen()"
+      [attr.aria-expanded]="menuOpen()"
+      [attr.aria-label]="ui().openMenu"
+      (click)="toggleMenu()"
+    >
+      <span></span>
+      <span></span>
+    </button>
+  </div>
 </header>
 
 @if (menuOpen()) {
@@ -51,26 +69,26 @@
     [class.site-menu--closing]="menuClosing()"
     role="dialog"
     aria-modal="true"
-    aria-label="Menu"
+    [attr.aria-label]="ui().menu"
   >
-    <button type="button" class="site-menu__close" aria-label="Fermer" (click)="closeMenu()">
+    <button type="button" class="site-menu__close" [attr.aria-label]="ui().closeMenu" (click)="closeMenu()">
       <span></span>
       <span></span>
     </button>
     <nav class="site-menu__nav">
       <a
         class="btn-pill site-menu__cv"
-        [href]="cvUrl"
-        [attr.download]="cvDownloadName"
+        [href]="portfolio().cvUrl"
+        [attr.download]="portfolio().cvDownloadName"
         (click)="onDownloadCv($event)"
       >
-        Télécharger le CV
+        {{ ui().downloadCv }}
       </a>
-      @for (item of nav; track item.section) {
+      @for (item of portfolio().nav; track item.section) {
         <a
           class="site-menu__link"
           [class.site-menu__link--active]="activeSection() === item.section"
-          [href]="'/'"
+          [href]="homeLink()"
           (click)="scrollTo(item.section, $event)"
         >
           {{ item.label }}
@@ -79,11 +97,14 @@
       <a
         class="site-menu__link"
         [class.site-menu__link--active]="activeSection() === 'contact'"
-        href="/"
+        [href]="homeLink()"
         (click)="scrollTo('contact', $event)"
       >
-        Contact
+        {{ ui().contact }}
       </a>
+      <button type="button" class="site-menu__lang" (click)="toggleLocale()">
+        {{ switchLabel() }}
+      </button>
     </nav>
   </div>
 }

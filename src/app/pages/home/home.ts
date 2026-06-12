@@ -1,12 +1,12 @@
 import { isPlatformBrowser } from '@angular/common';
-import { afterNextRender, Component, inject, PLATFORM_ID } from '@angular/core';
+import { afterNextRender, Component, computed, inject, PLATFORM_ID } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { PORTFOLIO, type Project } from '../../data/portfolio.data';
+import type { Project } from '../../data/portfolio.data';
 import { WorkCard } from '../../components/work-card/work-card';
 import { RevealOnScrollDirective } from '../../directives/reveal-on-scroll.directive';
+import { LocaleService } from '../../services/locale.service';
 import {
   normalizeSectionId,
-  scrollToSection,
   scrollToSectionClean,
   setCleanUrl,
 } from '../../utils/scroll-section';
@@ -25,26 +25,39 @@ import {
 export class Home {
   private readonly route = inject(ActivatedRoute);
   private readonly platformId = inject(PLATFORM_ID);
+  protected readonly locale = inject(LocaleService);
 
-  protected readonly portfolio = PORTFOLIO;
-  protected readonly nameFirst = PORTFOLIO.name.split(' ')[0] ?? PORTFOLIO.name;
-  protected readonly nameLast =
-    PORTFOLIO.name.split(' ').slice(1).join(' ') || PORTFOLIO.name;
-  protected readonly locationLabel = 'Basé à Madagascar';
-  protected readonly roleLine1 =
-    PORTFOLIO.role.split(' ').slice(0, -1).join(' ') || PORTFOLIO.role;
-  protected readonly roleLine2 =
-    PORTFOLIO.role.split(' ').slice(-1)[0] ?? '';
+  protected readonly portfolio = this.locale.portfolio;
+  protected readonly ui = this.locale.ui;
 
-  protected readonly featuredProjects: Project[] = PORTFOLIO.featuredProjectSlugs.flatMap(
-    (slug) => {
-      const project = PORTFOLIO.projects.find((p) => p.slug === slug);
+  protected readonly nameFirst = computed(
+    () => this.portfolio().name.split(' ')[0] ?? this.portfolio().name
+  );
+  protected readonly nameLast = computed(
+    () => this.portfolio().name.split(' ').slice(1).join(' ') || this.portfolio().name
+  );
+  protected readonly roleLine1 = computed(() => {
+    const role = this.portfolio().role;
+    return role.split(' ').slice(0, -1).join(' ') || role;
+  });
+  protected readonly roleLine2 = computed(() => {
+    const role = this.portfolio().role;
+    return role.split(' ').slice(-1)[0] ?? '';
+  });
+
+  protected readonly featuredProjects = computed((): Project[] =>
+    this.portfolio().featuredProjectSlugs.flatMap((slug) => {
+      const project = this.portfolio().projects.find((p) => p.slug === slug);
       return project ? [{ ...project }] : [];
-    }
+    })
   );
 
-  protected readonly contactEmail = PORTFOLIO.contacts.find((c) => c.icon === 'email');
-  protected readonly footerContacts = PORTFOLIO.contacts.filter((c) => c.icon !== 'email');
+  protected readonly contactEmail = computed(() =>
+    this.portfolio().contacts.find((c) => c.icon === 'email')
+  );
+  protected readonly footerContacts = computed(() =>
+    this.portfolio().contacts.filter((c) => c.icon !== 'email')
+  );
   protected readonly currentYear = new Date().getFullYear();
 
   constructor() {
@@ -63,10 +76,7 @@ export class Home {
       }
 
       if (fragment) {
-        setTimeout(
-          () => scrollToSectionClean(normalizeSectionId(fragment)),
-          120
-        );
+        setTimeout(() => scrollToSectionClean(normalizeSectionId(fragment)), 120);
         return;
       }
 
@@ -86,5 +96,9 @@ export class Home {
   protected scrollTo(sectionId: string, event: Event): void {
     event.preventDefault();
     scrollToSectionClean(sectionId);
+  }
+
+  protected projectLink(slug: string): string[] {
+    return this.locale.projectLink(slug);
   }
 }

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
-import { PORTFOLIO } from '../../data/portfolio.data';
+import { PORTFOLIO_FR } from '../../data/portfolio.fr';
 
 @Component({
   selector: 'app-bottom-nav',
@@ -9,5 +9,5 @@ import { PORTFOLIO } from '../../data/portfolio.data';
   styleUrl: './bottom-nav.scss',
 })
 export class BottomNav {
-  protected readonly nav = PORTFOLIO.nav;
+  protected readonly nav = PORTFOLIO_FR.nav;
 }

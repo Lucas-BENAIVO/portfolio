@@ -1,6 +1,7 @@
-import { Component, input, ViewEncapsulation } from '@angular/core';
+import { Component, inject, input, ViewEncapsulation } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { RevealOnScrollDirective } from '../../directives/reveal-on-scroll.directive';
+import { LocaleService } from '../../services/locale.service';
 
 @Component({
   selector: 'app-work-card',
@@ -10,6 +11,8 @@ import { RevealOnScrollDirective } from '../../directives/reveal-on-scroll.direc
   encapsulation: ViewEncapsulation.None,
 })
 export class WorkCard {
+  protected readonly ui = inject(LocaleService).ui;
+
   readonly title = input.required<string>();
   readonly meta = input.required<string>();
   readonly description = input<string>();

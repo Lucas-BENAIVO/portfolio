@@ -1,8 +1,8 @@
-import { Component, inject } from '@angular/core';
+import { Component, computed, inject } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { PORTFOLIO } from '../../data/portfolio.data';
 import { SiteHeader } from '../../layout/site-header/site-header';
 import { RevealOnScrollDirective } from '../../directives/reveal-on-scroll.directive';
+import { LocaleService } from '../../services/locale.service';
 
 @Component({
   selector: 'app-project-detail',
@@ -14,15 +14,17 @@ import { RevealOnScrollDirective } from '../../directives/reveal-on-scroll.direc
 export class ProjectDetail {
   private readonly route = inject(ActivatedRoute);
   private readonly router = inject(Router);
-  protected readonly portfolio = PORTFOLIO;
+  protected readonly locale = inject(LocaleService);
+  protected readonly ui = this.locale.ui;
 
-  protected get project() {
+  protected readonly project = computed(() => {
     const slug = this.route.snapshot.paramMap.get('slug');
-    return PORTFOLIO.projects.find((p) => p.slug === slug) ?? PORTFOLIO.projects[0];
-  }
+    const projects = this.locale.portfolio().projects;
+    return projects.find((p) => p.slug === slug) ?? projects[0];
+  });
 
   protected goBack(event: Event): void {
     event.preventDefault();
-    void this.router.navigate(['/'], { state: { scrollTo: 'realisations' } });
+    void this.router.navigate([this.locale.homeLink()], { state: { scrollTo: 'realisations' } });
   }
 }

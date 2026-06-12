@@ -3,22 +3,22 @@
   <div class="shell__card">
     <main class="shell__main">
       <section class="project-detail page page-enter">
-        <a class="back-link" href="/" (click)="goBack($event)" appReveal>
-          <span aria-hidden="true">←</span> Retour
+        <a class="back-link" [href]="locale.homeLink()" (click)="goBack($event)" appReveal>
+          <span aria-hidden="true">←</span> {{ ui().back }}
         </a>
 
         <header class="page-head page-head--compact" appReveal>
-          <h1 class="page-head__title" appReveal [appRevealClip]="true" [appRevealDelay]="60">{{ project.title }}</h1>
-          <p class="page-head__sub" appReveal [appRevealDelay]="130">{{ project.category }}</p>
+          <h1 class="page-head__title" appReveal [appRevealClip]="true" [appRevealDelay]="60">{{ project().title }}</h1>
+          <p class="page-head__sub" appReveal [appRevealDelay]="130">{{ project().category }}</p>
         </header>
 
         <div class="project-detail__body" appReveal [appRevealDelay]="100">
-          <h2 class="skill-category__label">À propos</h2>
-          <p class="project-detail__about">{{ project.about }}</p>
+          <h2 class="skill-category__label">{{ ui().about }}</h2>
+          <p class="project-detail__about">{{ project().about }}</p>
 
-          <h2 class="skill-category__label">Réalisations</h2>
+          <h2 class="skill-category__label">{{ ui().achievements }}</h2>
           <ul class="project-detail__achievements">
-            @for (item of project.achievements; track item; let i = $index) {
+            @for (item of project().achievements; track item; let i = $index) {
               <li appReveal [appRevealDelay]="140 + i * 70">{{ item }}</li>
             }
           </ul>

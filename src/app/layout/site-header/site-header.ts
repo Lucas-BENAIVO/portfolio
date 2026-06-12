@@ -8,7 +8,7 @@ import {
   signal,
 } from '@angular/core';
 import { Router } from '@angular/router';
-import { PORTFOLIO } from '../../data/portfolio.data';
+import { LocaleService } from '../../services/locale.service';
 import { scrollToSectionClean } from '../../utils/scroll-section';
 import { downloadCv } from '../../utils/download-cv';
 
@@ -25,14 +25,13 @@ const MENU_CLOSE_MS = 380;
 export class SiteHeader implements AfterViewInit, OnDestroy {
   private readonly platformId = inject(PLATFORM_ID);
   private readonly router = inject(Router);
+  protected readonly locale = inject(LocaleService);
   private closeTimer?: ReturnType<typeof setTimeout>;
   private scrollTarget?: HTMLElement;
   private onScroll?: () => void;
 
-  protected readonly nav = PORTFOLIO.nav;
-  protected readonly openToWork = PORTFOLIO.openToWork;
-  protected readonly cvUrl = PORTFOLIO.cvUrl;
-  protected readonly cvDownloadName = PORTFOLIO.cvDownloadName;
+  protected readonly portfolio = this.locale.portfolio;
+  protected readonly ui = this.locale.ui;
   protected readonly menuOpen = signal(false);
   protected readonly menuClosing = signal(false);
   protected readonly onHero = signal(false);
@@ -59,6 +58,14 @@ export class SiteHeader implements AfterViewInit, OnDestroy {
     this.setMenuLock(false);
   }
 
+  protected homeLink(): string {
+    return this.locale.homeLink();
+  }
+
+  protected switchLabel(): string {
+    return this.locale.locale() === 'fr' ? this.ui().switchToEn : this.ui().switchToFr;
+  }
+
   protected scrollTo(sectionId: string, event: Event): void {
     event.preventDefault();
     this.closeMenu();
@@ -68,7 +75,7 @@ export class SiteHeader implements AfterViewInit, OnDestroy {
 
     const section = document.getElementById(sectionId);
     if (!section) {
-      void this.router.navigate(['/'], { state: { scrollTo: sectionId } });
+      void this.router.navigate([this.homeLink()], { state: { scrollTo: sectionId } });
       return;
     }
 
@@ -77,7 +84,19 @@ export class SiteHeader implements AfterViewInit, OnDestroy {
   }
 
   protected onDownloadCv(event: Event): void {
-    downloadCv(this.cvUrl, this.cvDownloadName, event);
+    const portfolio = this.portfolio();
+    downloadCv(
+      portfolio.cvUrl,
+      portfolio.cvDownloadName,
+      event,
+      this.ui().cvNotFound,
+      this.ui().cvWrongFile
+    );
+  }
+
+  protected toggleLocale(): void {
+    this.closeMenu();
+    this.locale.toggleLocale();
   }
 
   protected toggleMenu(): void {
@@ -117,7 +136,9 @@ export class SiteHeader implements AfterViewInit, OnDestroy {
 
     this.onHero.set(main.scrollTop < hero.offsetHeight - 80);
 
-    const sections = PORTFOLIO.nav.map((item) => item.section).concat(['contact']);
+    const sections = this.portfolio()
+      .nav.map((item) => item.section)
+      .concat(['contact']);
     const scrollPos = main.scrollTop + 100;
     let current = 'home';
 
