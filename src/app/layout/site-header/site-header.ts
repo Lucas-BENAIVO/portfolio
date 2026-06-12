@@ -1,13 +1,16 @@
-import { isPlatformBrowser } from '@angular/common';
+import { isPlatformBrowser, NgTemplateOutlet } from '@angular/common';
 import {
   AfterViewInit,
   Component,
+  ElementRef,
+  HostListener,
   inject,
   OnDestroy,
   PLATFORM_ID,
   signal,
 } from '@angular/core';
 import { Router } from '@angular/router';
+import type { Locale } from '../../data/portfolio.data';
 import { LocaleService } from '../../services/locale.service';
 import { scrollToSectionClean } from '../../utils/scroll-section';
 import { downloadCv } from '../../utils/download-cv';
@@ -16,6 +19,7 @@ const MENU_CLOSE_MS = 380;
 
 @Component({
   selector: 'app-site-header',
+  imports: [NgTemplateOutlet],
   templateUrl: './site-header.html',
   styleUrl: './site-header.scss',
   host: {
@@ -25,6 +29,7 @@ const MENU_CLOSE_MS = 380;
 export class SiteHeader implements AfterViewInit, OnDestroy {
   private readonly platformId = inject(PLATFORM_ID);
   private readonly router = inject(Router);
+  private readonly host = inject(ElementRef<HTMLElement>);
   protected readonly locale = inject(LocaleService);
   private closeTimer?: ReturnType<typeof setTimeout>;
   private scrollTarget?: HTMLElement;
@@ -34,8 +39,10 @@ export class SiteHeader implements AfterViewInit, OnDestroy {
   protected readonly ui = this.locale.ui;
   protected readonly menuOpen = signal(false);
   protected readonly menuClosing = signal(false);
+  protected readonly langOpen = signal(false);
   protected readonly onHero = signal(false);
   protected readonly activeSection = signal('home');
+  protected readonly localeOptions: Locale[] = ['fr', 'en'];
 
   ngAfterViewInit(): void {
     if (!isPlatformBrowser(this.platformId)) {
@@ -58,17 +65,48 @@ export class SiteHeader implements AfterViewInit, OnDestroy {
     this.setMenuLock(false);
   }
 
+  @HostListener('document:click', ['$event'])
+  protected onDocumentClick(event: MouseEvent): void {
+    if (!this.langOpen()) {
+      return;
+    }
+
+    const target = event.target as Node | null;
+    if (target && this.host.nativeElement.contains(target)) {
+      return;
+    }
+
+    this.langOpen.set(false);
+  }
+
   protected homeLink(): string {
     return this.locale.homeLink();
   }
 
-  protected switchLabel(): string {
-    return this.locale.locale() === 'fr' ? this.ui().switchToEn : this.ui().switchToFr;
+  protected currentLocaleCode(): string {
+    return this.locale.locale().toUpperCase();
+  }
+
+  protected localeLabel(code: Locale): string {
+    return code.toUpperCase();
+  }
+
+  protected toggleLangMenu(event: Event): void {
+    event.stopPropagation();
+    this.langOpen.update((open) => !open);
+  }
+
+  protected selectLocale(code: Locale, event: Event): void {
+    event.stopPropagation();
+    this.langOpen.set(false);
+    this.closeMenu();
+    this.locale.setLocale(code);
   }
 
   protected scrollTo(sectionId: string, event: Event): void {
     event.preventDefault();
     this.closeMenu();
+    this.langOpen.set(false);
     if (!isPlatformBrowser(this.platformId)) {
       return;
     }
@@ -94,12 +132,8 @@ export class SiteHeader implements AfterViewInit, OnDestroy {
     );
   }
 
-  protected toggleLocale(): void {
-    this.closeMenu();
-    this.locale.toggleLocale();
-  }
-
   protected toggleMenu(): void {
+    this.langOpen.set(false);
     if (this.menuOpen()) {
       this.closeMenu();
     } else {

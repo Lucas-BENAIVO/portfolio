@@ -50,7 +50,14 @@ export class LocaleService {
   }
 
   toggleLocale(): void {
-    const next: Locale = this.localeSignal() === 'fr' ? 'en' : 'fr';
+    this.setLocale(this.localeSignal() === 'fr' ? 'en' : 'fr');
+  }
+
+  setLocale(next: Locale): void {
+    if (next === this.localeSignal()) {
+      return;
+    }
+
     const url = this.router.url.split('?')[0] ?? '/';
 
     if (next === 'en') {

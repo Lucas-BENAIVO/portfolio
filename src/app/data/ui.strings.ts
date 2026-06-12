@@ -41,6 +41,7 @@ export interface UiStrings {
   tooltipCode: string;
   switchToEn: string;
   switchToFr: string;
+  chooseLanguage: string;
   cvNotFound: string;
   cvWrongFile: string;
 }
@@ -86,6 +87,7 @@ const UI_FR: UiStrings = {
   tooltipCode: 'Code',
   switchToEn: 'EN',
   switchToFr: 'FR',
+  chooseLanguage: 'Choisir la langue',
   cvNotFound: 'CV introuvable',
   cvWrongFile: 'Mauvais fichier servi (HTML au lieu du PDF)',
 };
@@ -131,6 +133,7 @@ const UI_EN: UiStrings = {
   tooltipCode: 'Code',
   switchToEn: 'EN',
   switchToFr: 'FR',
+  chooseLanguage: 'Choose language',
   cvNotFound: 'CV not found',
   cvWrongFile: 'Wrong file served (HTML instead of PDF)',
 };
