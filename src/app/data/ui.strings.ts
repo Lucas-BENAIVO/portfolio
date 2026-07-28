@@ -19,6 +19,7 @@ export interface UiStrings {
   experienceSubtitle: string;
   inProgress: string;
   viewSite: string;
+  viewDiploma: string;
   skills: string;
   skillsAria: string;
   skillsSubtitle: string;
@@ -65,6 +66,7 @@ const UI_FR: UiStrings = {
   experienceSubtitle: 'Parcours professionnel & missions',
   inProgress: 'En cours',
   viewSite: 'Voir le site',
+  viewDiploma: 'Diplôme',
   skills: 'Compétences',
   skillsAria: 'Compétences',
   skillsSubtitle: 'Stack technique, langues & savoir-être',
@@ -111,6 +113,7 @@ const UI_EN: UiStrings = {
   experienceSubtitle: 'Professional journey & missions',
   inProgress: 'In progress',
   viewSite: 'View site',
+  viewDiploma: 'Diploma',
   skills: 'Skills',
   skillsAria: 'Skills',
   skillsSubtitle: 'Tech stack, languages & soft skills',

@@ -44,6 +44,8 @@ export interface EducationItem {
   title: string;
   period: string;
   detail?: string;
+  href?: string;
+  linkLabel?: string;
 }
 
 export interface CompetitionItem {

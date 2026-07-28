@@ -50,7 +50,23 @@
       @for (edu of portfolio.education; track edu.title; let i = $index) {
         <li class="edu-list__item" appReveal [appRevealDelay]="160 + i * 70">
           <div class="edu-list__head">
-            <h3 class="edu-list__title">{{ edu.title }}</h3>
+            <h3 class="edu-list__title">
+              @if (edu.href) {
+                <a
+                  class="edu-list__title-link"
+                  [href]="edu.href"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  [attr.aria-label]="(edu.linkLabel ?? 'Diplôme') + ' — ' + edu.title"
+                  [attr.title]="edu.linkLabel ?? 'Diplôme'"
+                >
+                  {{ edu.title }}
+                  <span class="edu-list__hint" aria-hidden="true">↗</span>
+                </a>
+              } @else {
+                {{ edu.title }}
+              }
+            </h3>
             <span class="edu-list__period">{{ edu.period }}</span>
           </div>
           @if (edu.detail) {

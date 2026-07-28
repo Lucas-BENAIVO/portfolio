@@ -202,8 +202,10 @@ export const PORTFOLIO_EN: PortfolioData = {
     },
     {
       title: "Bachelor's degree in Computer Science · Class valedictorian",
-      period: 'July 2026',
+      period: 'June 2026',
       detail: 'IT University, Andoharanofotsy, Madagascar',
+      href: 'https://res.cloudinary.com/dx7gsk0vi/image/upload/v1785255928/licence_ITU_ororot.pdf',
+      linkLabel: 'Diploma',
     },
     {
       title: 'AI Engineering for Software Development certification',

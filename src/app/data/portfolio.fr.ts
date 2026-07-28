@@ -203,8 +203,10 @@ export const PORTFOLIO_FR: PortfolioData = {
     },
     {
       title: 'Licence en Informatique · Major de promotion',
-      period: 'Juillet 2026',
+      period: 'Juin 2026',
       detail: 'IT University, Andoharanofotsy, Madagascar',
+      href: 'https://res.cloudinary.com/dx7gsk0vi/image/upload/v1785255928/licence_ITU_ororot.pdf',
+      linkLabel: 'Diplôme',
     },
     {
       title: 'Certification en ingénierie IA pour le développement logiciel',
