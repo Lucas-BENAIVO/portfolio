@@ -227,7 +227,7 @@ export const PORTFOLIO_FR: PortfolioData = {
       detail: 'DataCamp',
     },
     {
-      title: 'Licence en Informatique',
+      title: 'Licence en Informatique · Major de promotion',
       period: '2025',
       detail: 'IT University, Andoharanofotsy, Madagascar',
     },

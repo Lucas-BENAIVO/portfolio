@@ -226,7 +226,7 @@ export const PORTFOLIO_EN: PortfolioData = {
       detail: 'DataCamp',
     },
     {
-      title: "Bachelor's degree in Computer Science",
+      title: "Bachelor's degree in Computer Science · Class valedictorian",
       period: '2025',
       detail: 'IT University, Andoharanofotsy, Madagascar',
     },
