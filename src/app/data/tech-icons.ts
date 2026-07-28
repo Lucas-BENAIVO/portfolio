@@ -19,7 +19,7 @@ export const TECH_ICONS = {
   express: devicon('express', 'express', 'original'),
   fastapi: devicon('fastapi', 'fastapi'),
   spring: devicon('spring', 'spring'),
-  django: devicon('django', 'django'),
+  django: devicon('django', 'django', 'plain'),
   dotnet: devicon('dot-net', 'dot-net'),
   shopify: simple('shopify', '96BF48'),
   mysql: devicon('mysql', 'mysql'),
