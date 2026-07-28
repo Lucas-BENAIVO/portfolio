@@ -201,6 +201,11 @@ export const PORTFOLIO_EN: PortfolioData = {
       detail: 'IT University, Andoharanofotsy, Madagascar',
     },
     {
+      title: "Bachelor's degree in Computer Science · Class valedictorian",
+      period: 'July 2026',
+      detail: 'IT University, Andoharanofotsy, Madagascar',
+    },
+    {
       title: 'AI Engineering for Software Development certification',
       period: 'May 2026',
       detail: 'DataCamp (associate level)',
@@ -224,11 +229,6 @@ export const PORTFOLIO_EN: PortfolioData = {
       title: 'Data Literacy certification',
       period: 'April 2026',
       detail: 'DataCamp',
-    },
-    {
-      title: "Bachelor's degree in Computer Science · Class valedictorian",
-      period: '2025',
-      detail: 'IT University, Andoharanofotsy, Madagascar',
     },
     {
       title: 'Neuromarketing training',

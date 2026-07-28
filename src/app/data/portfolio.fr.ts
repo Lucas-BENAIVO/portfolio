@@ -202,6 +202,11 @@ export const PORTFOLIO_FR: PortfolioData = {
       detail: 'IT University, Andoharanofotsy, Madagascar',
     },
     {
+      title: 'Licence en Informatique · Major de promotion',
+      period: 'Juillet 2026',
+      detail: 'IT University, Andoharanofotsy, Madagascar',
+    },
+    {
       title: 'Certification en ingénierie IA pour le développement logiciel',
       period: 'Mai 2026',
       detail: 'DataCamp (niveau associé)',
@@ -225,11 +230,6 @@ export const PORTFOLIO_FR: PortfolioData = {
       title: 'Certification en Culture des Données',
       period: 'Avril 2026',
       detail: 'DataCamp',
-    },
-    {
-      title: 'Licence en Informatique · Major de promotion',
-      period: '2025',
-      detail: 'IT University, Andoharanofotsy, Madagascar',
     },
     {
       title: 'Formation en neuromarketing',
