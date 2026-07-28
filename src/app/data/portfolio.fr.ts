@@ -125,6 +125,7 @@ export const PORTFOLIO_FR: PortfolioData = {
         { name: 'Express', icon: TECH_ICONS.express },
         { name: 'FastAPI', icon: TECH_ICONS.fastapi },
         { name: 'Spring', icon: TECH_ICONS.spring },
+        { name: 'Django', icon: TECH_ICONS.django },
         { name: '.NET', icon: TECH_ICONS.dotnet },
       ],
     },
@@ -137,8 +138,9 @@ export const PORTFOLIO_FR: PortfolioData = {
       id: 'database',
       label: 'Bases de données',
       skills: [
-        { name: 'MySQL', icon: TECH_ICONS.mysql },
         { name: 'PostgreSQL', icon: TECH_ICONS.postgresql },
+        { name: 'MySQL', icon: TECH_ICONS.mysql },
+        { name: 'SQL Server', icon: TECH_ICONS.sqlserver },
         { name: 'DWH', icon: TECH_ICONS.dwh },
       ],
     },
@@ -157,6 +159,7 @@ export const PORTFOLIO_FR: PortfolioData = {
       skills: [
         { name: 'Git', icon: TECH_ICONS.git },
         { name: 'GitHub', icon: TECH_ICONS.github },
+        { name: 'GitLab', icon: TECH_ICONS.gitlab },
         { name: 'Bitbucket', icon: TECH_ICONS.bitbucket },
       ],
     },
