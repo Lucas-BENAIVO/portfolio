@@ -219,14 +219,14 @@ export const PORTFOLIO_FR: PortfolioData = {
       title: 'Certification en développement Python',
       period: 'Mai 2026',
       detail: 'freeCodeCamp',
-      href: 'https://res.cloudinary.com/dx7gsk0vi/image/upload/v1781343228/freecodecamp.org_certification_lucasbenaivo_python-v9_nlzmbe.pdf',
+      href: 'https://res.cloudinary.com/dx7gsk0vi/image/upload/v1785348288/freecodecamp.org_certification_lucasbenaivo_python-v9_jzgvho.pdf',
       linkLabel: 'Certificat',
     },
     {
       title: 'Certification en développement JavaScript',
       period: 'Avril 2026',
       detail: 'freeCodeCamp',
-      href: 'https://res.cloudinary.com/dx7gsk0vi/image/upload/v1781343228/Profile___freeCodeCamp.org_bhhjo9.pdf',
+      href: 'https://res.cloudinary.com/dx7gsk0vi/image/upload/v1785348271/Profile___freeCodeCamp_quzpso.pdf',
       linkLabel: 'Certificat',
     },
     {
