@@ -28,8 +28,8 @@
           [href]="viewHref()!"
           target="_blank"
           rel="noopener noreferrer"
-          [attr.aria-label]="ui().viewProject"
-          [attr.data-tooltip]="ui().tooltipSite"
+          [attr.aria-label]="viewLabel() ?? ui().viewProject"
+          [attr.data-tooltip]="viewLabel() ?? ui().tooltipSite"
         >
           <svg class="work-card__action-icon work-card__action-icon--view" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <path d="M7 17 17 7" />

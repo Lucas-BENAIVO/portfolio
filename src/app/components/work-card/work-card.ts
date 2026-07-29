@@ -21,6 +21,7 @@ export class WorkCard {
   readonly revealDelay = input(0);
   readonly compact = input(false);
   readonly viewHref = input<string>();
+  readonly viewLabel = input<string>();
   readonly detailsRouterLink = input<string[]>();
   readonly githubUrl = input<string | undefined>(undefined);
 
