@@ -46,7 +46,7 @@ export const PORTFOLIO_EN: PortfolioData = {
     {
       role: 'IT Project Developer | DevOps',
       company: 'Première Agence de Microfinance',
-      period: 'July 2026',
+      period: 'Since July 2026',
       missions: [
         {
           title: 'Development and maintenance of internal tools and business applications',
@@ -222,8 +222,13 @@ export const PORTFOLIO_EN: PortfolioData = {
   ],
   education: [
     {
-      title: 'Master 1 in Computer Science (in progress)',
-      period: 'Since December 2025',
+      title: 'Master 2 MIAGE – MBDS',
+      period: 'Since October 2026',
+      detail: 'Université Côte d’Azur, Nice, France',
+    },
+    {
+      title: 'Master 1 in Computer Science',
+      period: 'September 2026',
       detail: 'IT University, Andoharanofotsy, Madagascar',
     },
     {
