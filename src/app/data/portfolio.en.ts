@@ -177,7 +177,14 @@ export const PORTFOLIO_EN: PortfolioData = {
         { name: 'Notion', icon: TECH_ICONS.notion },
       ],
     },
-
+    {
+      id: 'ide',
+      label: 'IDE',
+      skills: [
+        { name: 'VS Code', icon: TECH_ICONS.vscode },
+        { name: 'Cursor', icon: TECH_ICONS.cursor },
+      ],
+    },
     {
       id: 'vcs',
       label: 'Version control',

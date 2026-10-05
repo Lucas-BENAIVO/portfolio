@@ -32,6 +32,8 @@ export const TECH_ICONS = {
   postman: simple('postman', 'FF6C37'),
   docker: devicon('docker', 'docker'),
   notion: simple('notion', '000000'),
+  vscode: devicon('vscode', 'vscode'),
+  cursor: simple('cursor', '000000'),
   wso2: '/tech/wso2.svg',
   git: devicon('git', 'git'),
 
