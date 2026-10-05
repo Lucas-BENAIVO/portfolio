@@ -44,6 +44,23 @@ export const PORTFOLIO_FR: PortfolioData = {
     'Curieux, rigoureux et créatif, je me spécialise en développement full-stack avec une passion pour l’intelligence artificielle appliquée. Mon approche méthodique et mon engagement dans l’apprentissage continu visent à transformer les défis techniques en solutions concrètes et innovantes.',
   experience: [
     {
+      role: 'IT Project Developer | DevOps',
+      company: 'Première Agence de Microfinance',
+      period: 'Juillet 2026',
+      missions: [
+        {
+          title: 'Développement et maintenance d’outils internes et d’applications métiers',
+          details: [
+            { label: 'Front-end', value: 'React' },
+            { label: 'Back-end et API', value: 'Spring, Django, Go, Rust, API REST, WSO2' },
+            { label: 'Base de données', value: 'SQL Server, PostgreSQL' },
+            { label: 'CI/CD et gestion de version', value: 'Git, GitLab CI/CD' },
+            { label: 'Core banking system', value: 'Aspekt' },
+          ],
+        },
+      ],
+    },
+    {
       role: 'Stagiaire en Développement Full-Stack',
       company: 'NextHope',
       period: 'Février 2026 à Mai 2026',
@@ -106,6 +123,8 @@ export const PORTFOLIO_FR: PortfolioData = {
         { name: 'TypeScript', icon: TECH_ICONS.typescript },
         { name: 'Python', icon: TECH_ICONS.python },
         { name: 'Java', icon: TECH_ICONS.java },
+        { name: 'Go', icon: TECH_ICONS.go },
+        { name: 'Rust', icon: TECH_ICONS.rust },
       ],
     },
     {
@@ -128,6 +147,11 @@ export const PORTFOLIO_FR: PortfolioData = {
         { name: 'Django', icon: TECH_ICONS.django },
         { name: '.NET', icon: TECH_ICONS.dotnet },
       ],
+    },
+    {
+      id: 'api',
+      label: 'API Management',
+      skills: [{ name: 'WSO2', icon: TECH_ICONS.wso2 }],
     },
     {
       id: 'cms',
@@ -153,6 +177,8 @@ export const PORTFOLIO_FR: PortfolioData = {
         { name: 'Notion', icon: TECH_ICONS.notion },
       ],
     },
+
+
     {
       id: 'vcs',
       label: 'Gestion de version',

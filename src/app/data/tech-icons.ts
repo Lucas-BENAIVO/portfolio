@@ -12,7 +12,10 @@ export const TECH_ICONS = {
   typescript: devicon('typescript', 'typescript'),
   python: devicon('python', 'python'),
   java: devicon('java', 'java'),
+  go: devicon('go', 'go'),
+  rust: simple('rust', '000000'),
   react: devicon('react', 'react'),
+
   nextjs: devicon('nextjs', 'nextjs'),
   vuejs: devicon('vuejs', 'vuejs'),
   angular: devicon('angular', 'angular'),
@@ -29,7 +32,10 @@ export const TECH_ICONS = {
   postman: simple('postman', 'FF6C37'),
   docker: devicon('docker', 'docker'),
   notion: simple('notion', '000000'),
+  wso2: '/tech/wso2.svg',
   git: devicon('git', 'git'),
+
+
   github: devicon('github', 'github'),
   gitlab: devicon('gitlab', 'gitlab'),
   bitbucket: devicon('bitbucket', 'bitbucket'),

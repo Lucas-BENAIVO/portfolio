@@ -44,9 +44,27 @@ export const PORTFOLIO_EN: PortfolioData = {
     'Curious, rigorous and creative, I specialize in full-stack development with a passion for applied artificial intelligence. My methodical approach and commitment to continuous learning aim to turn technical challenges into concrete, innovative solutions.',
   experience: [
     {
+      role: 'IT Project Developer | DevOps',
+      company: 'Première Agence de Microfinance',
+      period: 'July 2026',
+      missions: [
+        {
+          title: 'Development and maintenance of internal tools and business applications',
+          details: [
+            { label: 'Front-end', value: 'React' },
+            { label: 'Back-end & API', value: 'Spring, Django, Go, Rust, REST API, WSO2' },
+            { label: 'Database', value: 'SQL Server, PostgreSQL' },
+            { label: 'CI/CD & version control', value: 'Git, GitLab CI/CD' },
+            { label: 'Core banking system', value: 'Aspekt' },
+          ],
+        },
+      ],
+    },
+    {
       role: 'Full-Stack Development Intern',
       company: 'NextHope',
       period: 'February 2026 to May 2026',
+
       missions: [
         {
           title: 'Recruitment platform development: Talentago',
@@ -105,6 +123,8 @@ export const PORTFOLIO_EN: PortfolioData = {
         { name: 'TypeScript', icon: TECH_ICONS.typescript },
         { name: 'Python', icon: TECH_ICONS.python },
         { name: 'Java', icon: TECH_ICONS.java },
+        { name: 'Go', icon: TECH_ICONS.go },
+        { name: 'Rust', icon: TECH_ICONS.rust },
       ],
     },
     {
@@ -127,6 +147,11 @@ export const PORTFOLIO_EN: PortfolioData = {
         { name: 'Django', icon: TECH_ICONS.django },
         { name: '.NET', icon: TECH_ICONS.dotnet },
       ],
+    },
+    {
+      id: 'api',
+      label: 'API Management',
+      skills: [{ name: 'WSO2', icon: TECH_ICONS.wso2 }],
     },
     {
       id: 'cms',
@@ -152,6 +177,7 @@ export const PORTFOLIO_EN: PortfolioData = {
         { name: 'Notion', icon: TECH_ICONS.notion },
       ],
     },
+
     {
       id: 'vcs',
       label: 'Version control',
@@ -201,7 +227,7 @@ export const PORTFOLIO_EN: PortfolioData = {
       detail: 'IT University, Andoharanofotsy, Madagascar',
     },
     {
-      title: "Bachelor's degree in Computer Science · Class valedictorian",
+      title: "Bachelor's degree in Computer Science · Top of the class",
       period: 'June 2026',
       detail: 'IT University, Andoharanofotsy, Madagascar',
       href: 'https://res.cloudinary.com/dx7gsk0vi/image/upload/v1785255928/licence_ITU_ororot.pdf',
